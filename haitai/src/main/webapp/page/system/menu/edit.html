@@ -1,0 +1,73 @@
+<form method="post" action="system/menu/save" class="pageForm required-validate"
+      onsubmit="return validateCallback(this, dialogAjaxDone);">
+    <div class="pageFormContent nowrap" layoutH="56">
+        <input type="hidden" name="model.id" value="${model.id}"/>
+        <input type="hidden" name="model.type" value="1"/>
+        <table class="dialogTable">
+            <tr>
+                <td>上级菜单</td>
+                <td>
+                    <select name="model.parentId" title="">
+                        <option value="0">根目录</option>
+                        <!--:for (item in roots) {-->
+                        <option value="${item.id}" ${item.id==model.parentId?'selected'}>${item.name}</option>
+                        <!--:}-->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>key</td>
+                <td>
+                    <input type="text" name="model.urlKey" value="${model.urlKey}" title=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>名称</td>
+                <td>
+                    <input type="text" name="model.name" value="${model.name}" title=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>链接地址</td>
+                <td>
+                    <input type="text" name="model.url" value="${model.url}" title=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>状态</td>
+                <td>
+                    <label>
+                        <input type="radio" name="model.status" value="2" ${model.status==2?"checked"}> 隐藏
+                    </label>
+                    <label>
+                        <input type="radio" name="model.status" value="1" ${model.status!=2?"checked"}> 显示
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>排序</td>
+                <td>
+                    <input type="number" name="model.sort" value="${model.sort}" title=""/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="formBar">
+        <ul>
+            <li>
+                <div class="buttonActive">
+                    <div class="buttonContent">
+                        <button type="submit">保存</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="button">
+                    <div class="buttonContent">
+                        <button type="button" class="close">取消</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>

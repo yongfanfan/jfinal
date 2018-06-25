@@ -1,0 +1,63 @@
+<form method="post" action="system/department/save" class="pageForm required-validate"
+      onsubmit="return validateCallback(this,dialogAjaxDone);">
+    <div class="pageFormContent nowrap" layoutH="56">
+        <input type="hidden" name="model.id" value="${model.id}"/>
+        <table class="dialogTable">
+            <tr>
+                <td>部门</td>
+                <td>
+                    <input type="text" name="model.name" value="${model.name}" class="required" title=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>排序</td>
+                <td>
+                    <input type="number" name="model.sort" value="${model.sort}" class="required" title=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>联系人</td>
+                <td>
+                    <input type="text" name="model.linkman" value="${model.linkman}" title=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>联系人电话</td>
+                <td>
+                    <input type="text" name="model.linkmanNo" value="${model.linkmanNo}" title=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>渠道</td>
+                <td>
+                    <select name="model.operatorId" class="required" title="">
+                        <option value="">--请选择渠道--</option>
+                        <!--:for (operator in operators) {-->
+                        <option value="${operator.operatorId}" ${model.operatorId==operator.operatorId?"selected"}>
+                            ${operator.operatorName}
+                        </option>
+                        <!--:}-->
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="formBar">
+        <ul>
+            <li>
+                <div class="buttonActive">
+                    <div class="buttonContent">
+                        <button type="submit">保存</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="button">
+                    <div class="buttonContent">
+                        <button type="button" class="close">取消</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>

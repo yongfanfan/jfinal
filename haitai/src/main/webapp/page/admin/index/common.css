@@ -1,0 +1,541 @@
+/*=============页面通用样式==============*/
+
+/*补充 修改jui的通用样式*/
+.pageHeader {
+    padding: 6px
+}
+
+/* Core Code */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+span.error {
+    left: 0;
+    height: 20px;
+    line-height: 20px;
+    width: 66px;
+    text-align: left;
+    display: inline-block;
+    padding-left: 5px;
+    background-color: transparent;
+    color: red;
+}
+
+table.list td {
+    padding: 4px 2px !important;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    height: 25px;
+    padding: 0 5px;
+    z-index: -1
+}
+
+#header .logo {
+    float: left;
+    height: 45px;
+    text-indent: -1000px;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+table.list th.asc, .grid .gridHeader th.asc {
+    /*background-position: 100% 0;*/
+    background: url(../../../component/jui/themes/default/images/sort_asc.png) no-repeat right center !important;
+    cursor: pointer;
+}
+
+table.list th.nobar, .grid .gridHeader th.nobar {
+    /*background-position: 100% 0;*/
+    background: url(../../../component/jui/themes/default/images/sort_both.png) no-repeat right;
+    cursor: pointer;
+}
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+table.list th.desc, .grid .gridHeader th.desc {
+    background: url(../../../component/jui/themes/default/images/sort_desc.png) no-repeat right center !important;
+    cursor: pointer;
+}
+
+table.list th.asc, .grid .gridHeader th.asc {
+    background: url(../../../component/jui/themes/default/images/sort_asc.png) no-repeat right center !important;
+    cursor: pointer;
+}
+
+table.list th.desc, .grid .gridHeader th.desc {
+    background: url(../../../component/jui/themes/default/images/sort_desc.png) no-repeat right center !important;
+    cursor: pointer;
+}
+
+.textInput, input.focus, input.required, input.error, input.readonly, input.disabled,
+textarea.focus, textarea.required, textarea.error, textarea.readonly, textarea.disabled {
+    border-radius: 2px
+}
+
+.searchContent {
+    width: 79%;
+    float: left;
+}
+
+.searchBar .subBar {
+    height: 25px;
+    width: 20%;
+    float: right;
+    margin-top: 4px;
+}
+
+.inputDateButton {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    float: none
+}
+
+.searchContent > span.date {
+    position: relative;
+}
+
+.grid .gridTbody td {
+    padding: 5px 3px
+}
+
+.pagination li.jumpto .textInput {
+    margin-right: 4px;
+    text-align: center
+}
+
+.formBar {
+    padding-top: 0;
+    border-width: 1px;
+}
+
+.formBar ul {
+    margin-top: 2px;
+}
+
+.pageFormContent {
+    border-width: 1px 1px 0 1px;
+    border-color: #eee;
+    background: #FFF;
+}
+
+.grid .gridHeader th[orderfield] {
+    background: url(../../../component/jui/themes/default/images/sort_both.png) no-repeat right;
+}
+
+#header .logo2 {
+    float: left;
+    height: 45px;
+    text-indent: -1000px;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+select {
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 1px 0;
+    -webkit-padding-after: 2px;
+    -webkit-padding-before: 0;
+}
+
+/*dialogTable 通用*/
+.dialogTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.dialogTable textarea {
+    width: 300px;
+    height: 40px;
+}
+
+.dialogTable select {
+    font-size: 12px;
+    padding: 1px 0;
+    -webkit-padding-after: 2px;
+    -webkit-padding-before: 0;
+}
+
+.dialogTable thead th {
+    color: black;
+    font-weight: bold;
+    padding: 7px 6px;
+    white-space: nowrap;
+}
+
+.dialogTable td {
+    padding: 8px 4px;
+    word-wrap: break-word;
+    word-break: break-all;
+    border-top: 1px solid #ddd;
+    font-size: 12px;
+}
+
+.dialogTable tr td:first-child {
+    padding-left: 10px !important;
+    padding-right: 10px;
+    font-weight: 500;
+    width: 80px;
+}
+
+.dialogTable tbody tr > td:nth-child(odd) {
+    font-weight: 500;
+}
+
+.dialogTable tr > td:not(:first-child) {
+    border-top: 1px solid #ddd;
+}
+
+.dialogTable tr:last-child {
+    border-bottom: 1px solid #ddd;
+}
+
+.dialogTable label {
+    float: none !important;
+}
+
+.dialogTable img {
+    vertical-align: middle;
+}
+
+.dialogTable > tr > td > input[type='file']:not(:first-child) {
+    margin: 4px 0 0 10px;
+}
+
+.dialogTable tbody tr:last-child {
+    border-bottom: 1px solid #ddd
+}
+
+.dialogTable caption {
+    font-weight: bold;
+    padding: 6px 0 7px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/*系统管理*/
+ul.empower {
+    padding-top: 10px;
+    width: 50%;
+    margin: 0 auto;
+    height: 400px;
+}
+
+ul.empower > li > div > label {
+    display: inline-block;
+    padding: 0;
+}
+
+ul.empower > li {
+    box-sizing: border-box;
+    width: 300px;
+    height: 39px !important;
+    padding: 5px 4px;
+    border: 1px solid #ddd;
+}
+
+ul.empower > li > .content {
+    float: left;
+    margin-top: 8px;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+ul.empower > li > div:nth-child(2) {
+    margin-top: 5px;
+}
+
+ul.empower > li > div > label {
+    width: auto;
+}
+
+ul.empower > li > div {
+    float: right;
+    padding-right: 10px;
+}
+
+/*以下代码来自旧版，可考虑优化【或者不用contentEditable的div而直接用textarea？】，只有goods、video的edit页面用到了它们*/
+.tags {
+    line-height: 22px;
+    height: 22px;
+    border-top: 1px solid rgb(210, 210, 210);
+}
+
+.tags .tags_label {
+    float: left;
+    margin-right: 20px;
+    margin-left: 5px;
+    padding: 5px 1px 1px 3px;
+}
+
+.tags .tags_content {
+    float: left;
+    width: 500px;
+    height: 29px;
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    vertical-align: middle;
+}
+
+.tags .tags_remark {
+    padding: 5px 1px 1px 3px;
+    color: #999999;
+    font-size: 12px;
+    z-index: 10000;
+    height: 29px;
+}
+
+.remark {
+    line-height: 22px;
+    height: 22px;
+    border-top: 1px solid rgb(210, 210, 210);
+}
+
+.remark .remark_label {
+    float: left;
+    margin-right: 20px;
+    margin-left: 5px;
+    padding: 5px 1px 1px 3px;
+}
+
+.remark .remark_content {
+    float: left;
+    width: 500px;
+    min-height: 50px;
+    padding: 3px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    vertical-align: middle;
+}
+
+/*其他管理*/
+#ajaxs img {
+    border: 1px solid #c0c0c0;
+}
+
+#ajaxs > div {
+    margin-left: 5px;
+    width: 384px;
+    height: 345px;
+}
+
+#content {
+    margin: 10px auto;
+    border: 1px solid #ddd;
+}
+
+#content img {
+    border: 1px solid #c0c0c0;
+    vertical-align: middle;
+}
+
+#content th {
+    border: 1px solid #ddd;
+    border-left: none;
+    border-top: none;
+}
+
+#content td {
+    border: 1px solid #ddd;
+    border-left: none;
+    border-top: none;
+}
+
+#content thead tr > th {
+    padding: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#content tbody tr > td:nth-child(1) {
+    padding-left: 50px;
+}
+
+#content tbody tr > td:nth-child(2) > div {
+    padding: 5px 4px;
+}
+
+#content tbody tr > td:nth-child(2) > div:not(:last-child) {
+    border-bottom: 1px solid #c0c0c0;
+}
+
+#content tbody tr > td:nth-child(3) > input {
+    margin-left: 20px;
+}
+
+#add_moudles img {
+    border: 1px solid #e0e0e0
+}
+
+.updata_moudules > div {
+    padding: 15px 10px;
+    border-top: 1px solid #ddd;
+}
+
+.searchContent > div {
+    float: left;
+    margin-right: 5px;
+    *margin-right: 9px;
+    margin-top: 5px;
+}
+
+.searchContent > select {
+    float: left;
+    margin-right: 5px;
+    *margin-right: 9px;
+    *margin-top: 4px;
+    margin-top: 5px;
+    -webkit-padding-after: 2px;
+    -webkit-padding-before: 0;
+}
+
+.searchContent > input {
+    float: left;
+    margin-right: 5px;
+    *margin-right: 9px;
+    *margin-top: 4px;
+    margin-top: 5px;
+}
+
+.searchContent > span.noname {
+    float: left;
+    display: inline-block;
+    margin-right: 5px;
+    *margin-right: 9px;
+    margin-top: 8px;
+}
+
+.searchContent > span.date {
+    float: left;
+    margin-right: 5px;
+    *margin-right: 9px;
+    margin-top: 5px;
+}
+
+/*修改列宽度*/
+.folderView tr td:first-child {
+    width: 37px;
+}
+
+.folderEdit tr td:first-child {
+    width: 71px;
+}
+
+.showgoodsEdit tr td:first-child {
+    width: 33px;
+}
+
+.showgoodsvodEdit tr td:first-child {
+    width: 57px;
+}
+
+.editOperator tr td:first-child {
+    width: 60px;
+}
+
+.goodsView tr td:first-child {
+    width: 80px;
+}
+
+.goodsEdit tr td:nth-child(3) {
+    width: 76px;
+}
+
+.videoalbumView tr td:first-child, .videoalbumEdit tr td:first-child {
+    width: 60px;
+}
+
+.videoView tr td:nth-child(3) {
+    width: 80px;
+}
+
+.btnLook {
+    margin-left: 4px;
+}
+
+button {
+    cursor: pointer;
+}
+
+#appconfigExport .beginTime, #appconfigExport .endTime {
+    width: 157px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/*用户信息*/
+.table2 {
+    width: 84%;
+    border-collapse: collapse;
+    border: 1px solid #AFBAC7;
+    margin: 19px auto 21px;
+}
+
+.table2 caption {
+    border: 1px solid #AFBAC7;
+    background-color: #D7DDE4;
+    padding: 7px 15px;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.table2 thead th:first-child {
+    border-left: 1px solid #AFBAC7;
+}
+
+.table2 td:last-child {
+    border-right: 1px solid #AFBAC7;
+}
+
+.table2 th:last-child {
+    border-right: 1px solid #AFBAC7;
+}
+
+.table2 td {
+    border-top: 1px solid #AFBAC7;
+    border-right: 1px solid #ededed;
+    text-align: left;
+    padding: 8px 0 8px 13px;
+}
+
+.table2 thead th {
+    border: 1px solid #ededed;
+    border-bottom: none;
+    color: #4E99D5;
+    /*padding: 4px;*/
+    padding: 8px 0 8px 13px;
+}
+
+#ajaxTabel01 .col-md-12 {
+    padding: 0;
+    border: none;
+}

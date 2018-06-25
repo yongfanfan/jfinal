@@ -1,0 +1,113 @@
+<form method="post" class="pageForm" onsubmit="return roleAuth.save();">
+    <div class="pageFormContent" layoutH="56">
+        <div>
+            <ul class="empower">
+                <!--:
+                for (item in menuMap) {
+                    var parent = item.key;
+                -->
+                <li style="background:#d9ede7">
+                    <div class="content">${parent.name}</div>
+                    <div class="pull-right">
+                        <label>
+                            <input type="radio" name="${parent.id}" data-parent="root" value="-1" checked>无
+                        </label>
+                        <label>
+                            <input type="radio" name="${parent.id}" data-parent="root" value="0">阅
+                        </label>
+                        <label>
+                            <input type="radio" name="${parent.id}" data-parent="root" value="1">改
+                        </label>
+                    </div>
+                </li>
+                <!--:for (child in item.value) {-->
+                <li>
+                    <div class="content">${child.name}</div>
+                    <div class="pull-right">
+                        <label>
+                            <input type="radio" name="${child.id}" data-parent="${parent.id}" value="-1" checked>无
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="${child.id}" data-parent="${parent.id}" value="0">阅
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="${child.id}" data-parent="${parent.id}" value="1">改
+                        </label>
+                    </div>
+                </li>
+                <!--:
+                    }
+                }
+                -->
+            </ul>
+        </div>
+    </div>
+    <div class="formBar">
+        <ul>
+            <li>
+                <div class="buttonActive">
+                    <div class="buttonContent">
+                        <button type="submit">保存</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="button">
+                    <div class="buttonContent">
+                        <button type="button" class="close">取消</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>
+<form id="realForm" method="post" action="system/role/saveAuth" style="display: none">
+    <input name="roleId" type="hidden" value="${roleId}">
+    <input id="views" name="views" type="hidden" value="${views}">
+    <input id="updates" name="updates" type="hidden" value="${updates}">
+</form>
+<script type="text/javascript">
+    $(function () {
+        var context = $.pdialog.getCurrent();
+        // 初始化，设置被选中
+        var views = $("#views", context).val().split(",");
+        var updates = $("#updates", context).val().split(",");
+        views.forEach(function (item) {
+            $("[name='" + item + "'][value='0']", context).prop("checked", true);
+        });
+        updates.forEach(function (item) {
+            $("[name='" + item + "'][value='1']", context).prop("checked", true);
+        });
+        // 单选按钮绑定点击事件
+        $('[data-parent]', context).click(function () {
+            var parentId = $(this).attr('data-parent');
+            var val = $(this).val();
+            if (parentId == 'root') {
+                // 子节点跟随父节点变化
+                var id = $(this).attr('name');
+                $("[data-parent='" + id + "'][value='" + val + "']", context).prop("checked", true);
+                return;
+            }
+            // 子节点有阅读或修改权限，父节点至少为阅读权限
+            if (val >= 0 && $("[name='" + parentId + "']", context).val() == -1) {
+                $("[name='" + parentId + "'][value='0']", context).prop("checked", true);
+            }
+        });
+    });
+    var roleAuth = {
+        save: function () {
+            var views = [];
+            var updates = [];
+            var context = $.pdialog.getCurrent();
+            $("[data-parent][value='0']:checked", context).each(function () {
+                views.push($(this).prop('name'));
+            });
+            $("[data-parent][value='1']:checked", context).each(function () {
+                updates.push($(this).prop('name'));
+            });
+            $('#views').val(views.join());
+            $('#updates').val(updates.join());
+            return validateCallback($('#realForm'), dialogAjaxDone);
+        }
+    };
+</script>

@@ -1,0 +1,151 @@
+<script>
+
+var videoTimePointMain = {
+        add: function () {
+            var operatorIds = $("input[name^='SysVideoTimePoints_']");
+            console.log(operatorIds);
+            if(operatorIds.length <= 0){
+                alertMsg.correct("请至少选择一条信息");
+                return;
+            }
+            var indexs = [];
+            for(var i = 0; i < operatorIds.length; i++){
+                var index = operatorIds[i].attributes[2].value;
+                indexs.push(Number(index) - 1);
+            }
+            console.log("indexs:"+indexs);
+            var videoId = $("input[name='video.id']")[0].value;
+            console.log("videoId:"+videoId);
+            if(videoId == ''){
+                alertMsg.correct("视频不能为空");
+                return;
+            }
+            var goodsIds = [];
+            var timePoints = [];
+            var durations = [];
+            var lefts = [];
+            var tops = [];
+            for(var j in indexs){
+                var index = indexs[j];
+                
+                var timePoint = $("input[name='model_" + index + ".timePoint']")[0].value;
+                if(timePoint == ''){
+                	alertMsg.correct("时间点不能为空");
+                    return;
+                }
+                timePoints.push(timePoint);
+                
+                var goodsId = $("input[name='goods_" + index + ".id']")[0].value;
+                if(goodsId == ''){
+                    alertMsg.correct("商品不能为空");
+                    return;
+                }
+                goodsIds.push(goodsId);
+                
+                var duration = $("input[name='model_" + index + ".duration']")[0].value;
+                if(duration == ''){
+                    alertMsg.correct("显示时长不能为空");
+                    return;
+                }
+                durations.push(duration);
+                
+                var left = $("input[name='model_" + index + ".left']")[0].value;
+                if(left == ''){
+                    alertMsg.correct("距左边的长度不能为空");
+                    return;
+                }
+                lefts.push(left);
+                
+                var top = $("input[name='model_" + index + ".top']")[0].value;
+                if(top == ''){
+                    alertMsg.correct("距上边的高度不能为空");
+                    return;
+                }
+                tops.push(top);
+                
+            }
+            
+            $.ajax({
+                type: 'POST',
+                url: 'admin/videoTimePoint/saveAdd',
+                data: {"goodsIds" : goodsIds, "timePoints" : timePoints, "durations" : durations, "lefts" : lefts, "tops" : tops, "videoId" : videoId},
+                traditional: true,
+                success: function (jsons) {
+                    alertMsg.correct(jsons.msg);
+                    if(jsons.status == 1){
+                        $("#videoTimePointAddSave").click();
+                        return;
+                    }
+                }
+            });
+        }
+    };
+</script>
+<form method="post" action="admin/videoTimePoint/list" onsubmit="return navTabSearch(this);" style="display:none;">
+      <button type="submit" id="videoTimePointAddSave">确定发布</button>
+</form>
+<h2 class="contentTitle">配置管理</h2>
+<form action="admin/videoTimePoint/saveAdd" method="post"
+	class="pageForm required-validate"
+	onsubmit="return validateCallback(this, myNavTabAjaxDone)">
+	<div class="pageContent">
+		<div class="pageFormContent"  layoutH="97">
+		<div class="divider"></div>
+                            <dl class="nowrap">
+                                <dt>视频名称：</dt>
+                                <dd>
+                                   <input type="text" name="video.name" value="" disabled class="required textInput" placeholder="选择一个视频" >
+                                   <a class="btnLook" href="admin/videoTimePoint/search/1" lookupGroup="video" title="查找带回">查找带回</a>
+                                   <span class="info">(可选择一个视频带回)</span> 
+                                </dd>
+                            </dl>
+                            <dl class="nowrap" style="display: none">
+                                <dt>视频id：</dt>
+                                <dd>
+                                <input type="hidden" name="video.id" value="" >
+                                </dd>
+                            </dl>
+                            <div class="divider"></div>
+	              
+	              <div>          
+				<table class="list nowrap itemDetail" width="100%" addbutton="新增一个时间点">
+					<thead>
+						<tr>
+							<!-- <th>请选择</th> -->
+							<th type="text" name="model_#index#.timePoint" defaultval="#index#" fieldclass="required digits" fieldattrs="{minlength:1, maxlength:5 ,placeholder:'输入数字'}">时间点（秒）</th>
+							<th type="lookup" name="goods_#index#.name" lookupgroup="goods_#index#" lookupurl="admin/videoTimePoint/search/2" 
+							suggestfields="name" postfield="keywords"  fieldclass="required">
+							商品名称</th>
+							<th type="text" name="model_#index#.duration" defaultval="#index#" fieldclass="required digits" fieldattrs="{minlength:1, maxlength:3 ,placeholder:'输入数字'}">持续显示时长（秒）</th>
+							<th type="text" name="model_#index#.left" defaultval="#index#" fieldclass="required digits" fieldattrs="{minlength:1, maxlength:3 ,placeholder:'输入数字'}">距左边的长度（px）</th>
+							<th type="text" name="model_#index#.top" defaultval="#index#" fieldclass="required digits" fieldattrs="{minlength:1, maxlength:3 ,placeholder:'输入数字'}">距上边的高度（px）</th>
+							<th type="del">操作</th>
+							<th type="hidden" name="SysVideoTimePoints_#index#" defaultval="#index#" style="display:none;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="divider"></div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li>
+					<div class="buttonActive">
+						<div class="buttonContent">
+							<button type="button"  onclick="videoTimePointMain.add();">保存</button>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="button">
+						<div class="buttonContent">
+							<button class="close" type="button">关闭</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</form>

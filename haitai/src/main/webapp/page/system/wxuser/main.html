@@ -1,0 +1,64 @@
+<!--:
+var action = "system/wxuser";
+var searchContent = {
+-->
+<input type="text" name="attr.openId" value="${attr.openId}" placeholder="请输入海苔id"/>
+<input type="text" name="attr.nickname" value="${attr.nickname}" placeholder="请输入用户昵称"/>
+<!--:
+};
+var panelBar = {
+-->
+<ul class="toolBar">
+    <li>
+        <a class="icon" href="system/wxuser/view/{itemid}" target="dialog" rel="wxuser-view" width="800" height="600">
+            <span>查看</span>
+        </a>
+    </li>
+    <li class="line"></li>
+    <li>
+        <a class="icon" href="system/wxuser/viewCoupon/{itemid}" target="dialog" rel="wxuser-viewCounpon" width="1000"
+           height="700">
+            <span>查看优惠券</span>
+        </a>
+    </li>
+</ul>
+<!--:
+};
+var table = {
+-->
+<thead>
+<tr>
+    <th>序号</th>
+    <th orderfield="open_id" class="${haitai.orderClass('open_id', orderField!, orderDirection!)}">海苔id</th>
+    <th orderfield="nickname" class="${haitai.orderClass('nickname', orderField!, orderDirection!)}">昵称</th>
+    <th>头像</th>
+    <th orderfield="create_time" class="${haitai.orderClass('create_time', orderField!, orderDirection!)}">创建时间</th>
+    <th orderfield="update_time" class="${haitai.orderClass('update_time', orderField!, orderDirection!)}">更新时间</th>
+</tr>
+</thead>
+<tbody>
+<!--:for (item in page.list) {-->
+<tr target="itemid" rel="${item.id}">
+    <td>${itemLP.index}</td>
+    <td>${item.openId}</td>
+    <td>${item.nickname}</td>
+    <td>
+        <!--:if (haitai.isNotEmpty(item.headImgUrl)) {-->
+        <a href="${item.headImgUrl}" target="_blank" style="text-decoration:none;">
+            <img alt="头像" title="点击浏览" src="${item.headImgUrl}" width=80" height="50">
+        </a>
+        <!--:}-->
+    </td>
+    <td>${item.createTime, ''}</td>
+    <td>${item.updateTime, ''}</td>
+</tr>
+<!--:}-->
+</tbody>
+<!--:
+};
+layout("/template/navTabPage.html",
+        {action : action,
+         searchContent : searchContent,
+         panelBar : panelBar,
+         table : table}) {}
+-->

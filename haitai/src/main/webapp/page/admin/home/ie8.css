@@ -1,0 +1,47 @@
+/*兼容IE8*/
+/*首页*/
+#ajaxTabel03 .col-md-6, #ajaxTabel02 .col-md-6, #ajaxTabel01 .col-md-6 {
+    width: 47% !important;
+    float: left;
+    padding-top: 15px
+}
+
+#container_i8 {
+    margin-left: 66px;
+    margin-right: 66px
+}
+
+#ajaxTabel01 .col-sm-3 {
+    width: 25%;
+    float: left;
+    padding: 0;
+    margin: 0
+}
+
+#ajaxTabel01 .col-sm-9 {
+    width: 75%;
+    float: left;
+    padding: 0;
+    margin: 0
+}
+
+#ajaxTabel02 .form-control, #ajaxTabel02 .form-group {
+    display: inline-block
+}
+
+#ajaxTablel02 .formHead {
+    padding: 8px 64px 0 64px
+}
+
+.col-md-12 {
+    width: 100%;
+}
+
+.title1 {
+    width: 100%;
+    *width: 95%;
+}
+
+.tableSearch button {
+    margin-bottom: 4px;
+}

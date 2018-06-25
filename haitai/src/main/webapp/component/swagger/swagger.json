@@ -1,0 +1,2572 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "此页面只应使用于测试/开发环境",
+    "version" : "2.0.170725",
+    "title" : "海苔视购前端测试文档",
+    "termsOfService" : "http://www.github.com/kongchen/swagger-maven-plugin",
+    "contact" : {
+      "name" : "Kong Chen",
+      "url" : "http://www.github.com/kongchen/swagger-maven-plugin",
+      "email" : "kongchen@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "app相关接口"
+  }, {
+    "name" : "vod相关接口"
+  }, {
+    "name" : "优惠券相关接口"
+  }, {
+    "name" : "全局消息处理接口"
+  }, {
+    "name" : "分类相关接口"
+  }, {
+    "name" : "发布专题相关接口"
+  }, {
+    "name" : "发布相关接口"
+  }, {
+    "name" : "搜索相关接口"
+  }, {
+    "name" : "用户中心观看历史相关接口"
+  }, {
+    "name" : "直播相关接口"
+  }, {
+    "name" : "行为数据相关接口"
+  }, {
+    "name" : "订单相关接口"
+  }, {
+    "name" : "鉴权相关接口"
+  }, {
+    "name" : "首屏相关接口"
+  } ],
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/front/app/config" : {
+      "get" : {
+        "tags" : [ "app相关接口" ],
+        "summary" : "配置信息",
+        "description" : "",
+        "operationId" : "configSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/app.AppDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/classification/info" : {
+      "get" : {
+        "tags" : [ "分类相关接口" ],
+        "summary" : "单个商品分类信息",
+        "description" : "",
+        "operationId" : "infoSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "classificationId",
+          "in" : "query",
+          "description" : "分类id，默认为1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/publishAlbum.InfoDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/classification/list" : {
+      "get" : {
+        "tags" : [ "分类相关接口" ],
+        "summary" : "商品分类，已废弃！请使用/front/template/menu",
+        "description" : "",
+        "operationId" : "listSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "pageIdx",
+          "in" : "query",
+          "description" : "默认1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "默认15",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/publishAlbum.ListDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/coupon/list" : {
+      "get" : {
+        "tags" : [ "优惠券相关接口" ],
+        "summary" : "用户中心优惠券接口",
+        "description" : "",
+        "operationId" : "listSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "pageIdx",
+          "in" : "query",
+          "description" : "默认1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "默认5",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "预留参数，默认0。1：时间内，2：有效，3：已使用，4：已过期，其它：全部",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/coupon.ListDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/datastatistics/dataStatics" : {
+      "post" : {
+        "tags" : [ "行为数据相关接口" ],
+        "summary" : "行为数据",
+        "description" : "",
+        "operationId" : "dataStaticsSwagger",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/datastatistics.DataStatisticsRequestDTO"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/datastatistics.DataStatisticsDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/device/auth" : {
+      "get" : {
+        "tags" : [ "鉴权相关接口" ],
+        "summary" : "AAA鉴权",
+        "description" : "",
+        "operationId" : "authSwagger",
+        "parameters" : [ {
+          "name" : "imei",
+          "in" : "query",
+          "description" : "与mac至少有一个非空",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "imsi",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "description" : "设备名",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "设备类型 0:OTT  1:DVB",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "brand",
+          "in" : "query",
+          "description" : "品牌",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "model",
+          "in" : "query",
+          "description" : "型号",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "systemVersion",
+          "in" : "query",
+          "description" : "系统版本",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "mac",
+          "in" : "query",
+          "description" : "mac地址，与imei至少有一个非空",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "resolution",
+          "in" : "query",
+          "description" : "分辨率",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "operator",
+          "in" : "query",
+          "description" : "运营商ID，如贵州省网550000",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "version",
+          "in" : "query",
+          "description" : "应用版本号",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/device.AuthDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/device/wxLogout" : {
+      "get" : {
+        "tags" : [ "鉴权相关接口" ],
+        "summary" : "用户登出接口",
+        "description" : "",
+        "operationId" : "wxLogoutSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/BaseDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/device/wxuser" : {
+      "get" : {
+        "tags" : [ "鉴权相关接口" ],
+        "summary" : "查询登录状态",
+        "description" : "前端可在展示登录二维码的页面每5秒请求一次此接口以判断登录状态",
+        "operationId" : "wxuserSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/device.WxuserDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/dvb/info" : {
+      "get" : {
+        "tags" : [ "直播相关接口" ],
+        "summary" : "直播频道信息",
+        "description" : "供全屏页面调用",
+        "operationId" : "infoSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "assetId",
+          "in" : "query",
+          "description" : "直播频道id",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/dvb.InfoDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/dvb/list" : {
+      "get" : {
+        "tags" : [ "直播相关接口" ],
+        "summary" : "直播频道列表",
+        "description" : "供launcher页面调用",
+        "operationId" : "listSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/dvb.ListDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/dvb/playbill" : {
+      "get" : {
+        "tags" : [ "直播相关接口" ],
+        "summary" : "直播频道节目单列表",
+        "description" : "供全屏页面调用",
+        "operationId" : "playbillSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "assetId",
+          "in" : "query",
+          "description" : "直播频道id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "pageIdx",
+          "in" : "query",
+          "description" : "默认1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "默认16",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/dvb.PlaybillDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/global/message" : {
+      "get" : {
+        "tags" : [ "全局消息处理接口" ],
+        "summary" : "全局消息接口",
+        "description" : "全局每10秒请求一次，弹窗显示消息",
+        "operationId" : "messageSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/global.MessageDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/global/scrolltips" : {
+      "get" : {
+        "tags" : [ "全局消息处理接口" ],
+        "summary" : "首页滚动消息",
+        "description" : "订单表最近20条数据",
+        "operationId" : "scrolltipsSwagger",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/global.ScrolltipsDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/history/info" : {
+      "get" : {
+        "tags" : [ "用户中心观看历史相关接口" ],
+        "summary" : "单个历史详情",
+        "description" : "返回的内容形式同publish/info",
+        "operationId" : "infoSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "productId",
+          "in" : "query",
+          "description" : "历史商品productId",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/publish.InfoDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/history/list" : {
+      "get" : {
+        "tags" : [ "用户中心观看历史相关接口" ],
+        "summary" : "历史列表",
+        "description" : "可调用history/info接口获取发布内容详情",
+        "operationId" : "listSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "pageIdx",
+          "in" : "query",
+          "description" : "默认1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "默认5",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/history.ListDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/history/position" : {
+      "get" : {
+        "tags" : [ "用户中心观看历史相关接口" ],
+        "summary" : "列表定位",
+        "description" : "获取历史商品在首页的列表定位，已废弃，可使用history/info直接获取详情",
+        "operationId" : "locationSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "productId",
+          "in" : "query",
+          "description" : "历史列表中选择的历史商品productId",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "publishUuid",
+          "in" : "query",
+          "description" : "新版launcher接口的数据中，type为2时的content",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "首页list每次请求条数，默认7",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/history.PositionDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/order/list" : {
+      "get" : {
+        "tags" : [ "订单相关接口" ],
+        "summary" : "用户中心订单页数据",
+        "description" : "根据openid从订单表查询",
+        "operationId" : "listSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "pageIdx",
+          "in" : "query",
+          "description" : "默认1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "默认5",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/order.ListDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/publish/all" : {
+      "get" : {
+        "tags" : [ "发布相关接口" ],
+        "summary" : "查询全部发布",
+        "description" : "",
+        "operationId" : "allSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "pageIdx",
+          "in" : "query",
+          "description" : "默认1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "默认7",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/publish.ListDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/publish/byAlbumId" : {
+      "get" : {
+        "tags" : [ "发布相关接口" ],
+        "summary" : "专题发布列表",
+        "description" : "",
+        "operationId" : "byAlbumIdSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "albumId",
+          "in" : "query",
+          "description" : "专题id，默认为1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageIdx",
+          "in" : "query",
+          "description" : "默认1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "默认7",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/publish.ListDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/publish/byClassificationId" : {
+      "get" : {
+        "tags" : [ "发布相关接口" ],
+        "summary" : "指定商品分类的发布列表",
+        "description" : "",
+        "operationId" : "byClassificationIdSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "classificationId",
+          "in" : "query",
+          "description" : "分类id，默认为1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageIdx",
+          "in" : "query",
+          "description" : "默认1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "默认7",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/publish.ListDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/publish/info" : {
+      "get" : {
+        "tags" : [ "发布相关接口" ],
+        "summary" : "单个发布信息",
+        "description" : "DVB独有",
+        "operationId" : "infoSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "publishId",
+          "in" : "query",
+          "description" : "publish的id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/publish.InfoDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/publish/nextInfo" : {
+      "get" : {
+        "tags" : [ "发布相关接口" ],
+        "summary" : "下一个带视频的发布信息",
+        "description" : "随机返回一个与传入id不同的带有视频的发布信息",
+        "operationId" : "nextInfoSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "publishId",
+          "in" : "query",
+          "description" : "publish的id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/publish.InfoDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/publish/qrcode" : {
+      "get" : {
+        "tags" : [ "发布相关接口" ],
+        "summary" : "首页商品订单弹出二维码接口",
+        "description" : "根据订购数量生成动态二维码图片（DVB独有）",
+        "operationId" : "qrcodeSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "productId",
+          "in" : "query",
+          "description" : "商品编号",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "count",
+          "in" : "query",
+          "description" : "商品订购数，默认1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/showgoods.QrcodeDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/publishAlbum/info" : {
+      "get" : {
+        "tags" : [ "发布专题相关接口" ],
+        "summary" : "单个发布专题信息",
+        "description" : "",
+        "operationId" : "infoSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "albumId",
+          "in" : "query",
+          "description" : "专题id，默认为1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/publishAlbum.InfoDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/publishAlbum/list" : {
+      "get" : {
+        "tags" : [ "发布专题相关接口" ],
+        "summary" : "发布专题列表，已废弃！请使用/front/template/menu",
+        "description" : "",
+        "operationId" : "listSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "pageIdx",
+          "in" : "query",
+          "description" : "默认1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "默认15",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/publishAlbum.ListDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/search/publish" : {
+      "get" : {
+        "tags" : [ "搜索相关接口" ],
+        "summary" : "搜索发布",
+        "description" : "",
+        "operationId" : "publishSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "key",
+          "in" : "query",
+          "description" : "搜索关键字",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "pageIdx",
+          "in" : "query",
+          "description" : "默认1",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "默认7",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/search.PublishDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/template/button" : {
+      "get" : {
+        "tags" : [ "首屏相关接口" ],
+        "summary" : "顶部按钮的列表",
+        "description" : "",
+        "operationId" : "buttonSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/template.ButtonDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/template/handpick" : {
+      "get" : {
+        "tags" : [ "首屏相关接口" ],
+        "summary" : "精选页",
+        "description" : "",
+        "operationId" : "handpickSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/template.HandpickedDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/template/launcher" : {
+      "get" : {
+        "tags" : [ "首屏相关接口" ],
+        "summary" : "首屏模板接口",
+        "description" : "此次演示，前两个模块每个携带三个专题或发布作为两排直接显示，之后的模块若遇到专题需要直接请求接口显示专题下的发布",
+        "operationId" : "launcherSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/template.LauncherDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/template/menu" : {
+      "get" : {
+        "tags" : [ "首屏相关接口" ],
+        "summary" : "商品分类加发布专题的列表",
+        "description" : "",
+        "operationId" : "menuSwagger",
+        "parameters" : [ {
+          "name" : "accessToken",
+          "in" : "header",
+          "description" : "鉴权加密串，生产环境必传",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/publishAlbum.ListDTO"
+            }
+          }
+        }
+      }
+    },
+    "/front/vod/url" : {
+      "get" : {
+        "tags" : [ "vod相关接口" ],
+        "summary" : "VOD播放地址请求接口",
+        "description" : "DVB VOD环境下使用",
+        "operationId" : "urlSwagger",
+        "parameters" : [ {
+          "name" : "Client",
+          "in" : "query",
+          "description" : "智能卡号，8851003900444263",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "Account",
+          "in" : "query",
+          "description" : "用户账号，8851003900444263",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "titleAssetId",
+          "in" : "query",
+          "description" : "请求的媒资ID，OTHE7820160606000036",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "folderAssetId",
+          "in" : "query",
+          "description" : "请求的栏目ID，MANU0000000000230565",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/vod.UrlDTO"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "BaseDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        }
+      }
+    },
+    "Data" : {
+      "type" : "object",
+      "properties" : {
+        "productId" : {
+          "type" : "string",
+          "example" : "201605102112581",
+          "description" : "商品ID"
+        },
+        "goodsName" : {
+          "type" : "string",
+          "example" : "test03",
+          "description" : "商品名称"
+        },
+        "goodsDesc" : {
+          "type" : "string",
+          "description" : "商品描述"
+        },
+        "goodsImg" : {
+          "type" : "string",
+          "description" : "商品图片(big_img)"
+        },
+        "goodsPrice" : {
+          "type" : "number",
+          "description" : "商品价格"
+        },
+        "viewTime" : {
+          "type" : "string",
+          "description" : "历史时间（由后端计算给出，分钟按5分钟步进，超过半小时以半小时计，超过1小时，以小时为单位，超过1天，由天计）"
+        }
+      }
+    },
+    "app.AppDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "data" : {
+          "$ref" : "#/definitions/app.AppDTO.Data"
+        }
+      },
+      "description" : "配置信息DTO"
+    },
+    "app.AppDTO.Data" : {
+      "type" : "object",
+      "properties" : {
+        "tel" : {
+          "type" : "string",
+          "example" : "400-888-888"
+        },
+        "loading" : {
+          "$ref" : "#/definitions/app.AppDTO.Loading"
+        },
+        "version" : {
+          "description" : "ott独有",
+          "$ref" : "#/definitions/app.AppDTO.Version"
+        }
+      }
+    },
+    "app.AppDTO.Loading" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string",
+          "example" : "image",
+          "description" : "加载页类型 image/video"
+        },
+        "url" : {
+          "type" : "string",
+          "example" : "http://xx.jpg"
+        },
+        "duration" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "显示时长（只对type=image有效）"
+        },
+        "jumpUrl" : {
+          "type" : "string",
+          "description" : "安卓跳转链接"
+        },
+        "jumpDvbUrl" : {
+          "type" : "string",
+          "description" : "dvb跳转链接"
+        }
+      }
+    },
+    "app.AppDTO.Version" : {
+      "type" : "object",
+      "properties" : {
+        "url" : {
+          "type" : "string",
+          "example" : "http://xx"
+        },
+        "latest" : {
+          "type" : "string",
+          "example" : "1.1.1"
+        },
+        "forceUpdate" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "0=不强制,1=选择更新"
+        },
+        "desc" : {
+          "type" : "string",
+          "description" : "更新说明"
+        }
+      }
+    },
+    "coupon.ListDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "url" : {
+          "type" : "string",
+          "description" : "手机扫码登录地址，status为1100时使用"
+        },
+        "qrcode" : {
+          "type" : "string",
+          "description" : "二维码图片地址，status为1100时使用"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 13,
+          "description" : "总条数"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/coupon.ListDTO.Data"
+          }
+        }
+      }
+    },
+    "coupon.ListDTO.Data" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string",
+          "example" : "JK7Q1BEO74U1KIJR",
+          "description" : "券码"
+        },
+        "batchNo" : {
+          "type" : "string",
+          "example" : "201610125960609794",
+          "description" : "批次号"
+        },
+        "price" : {
+          "type" : "string",
+          "example" : "10",
+          "description" : "券面价格"
+        },
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "券类型 1直降 2满减"
+        },
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "0未使用，1已使用，2已过期"
+        },
+        "range" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "使用范围,1全站，2针对商品"
+        },
+        "beginTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2016-10-12 16:13:00",
+          "description" : "开始时间"
+        },
+        "endTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2016-10-31 16:10:00",
+          "description" : "结束时间"
+        },
+        "create_time" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2016-10-12 16:13:59",
+          "description" : "领取时间"
+        }
+      }
+    },
+    "datastatistics.DataStatisticsDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        }
+      },
+      "description" : "行为数据DTO"
+    },
+    "datastatistics.DataStatisticsRequestDTO" : {
+      "type" : "object",
+      "properties" : {
+        "url" : {
+          "type" : "string",
+          "description" : "页面location"
+        },
+        "page_name" : {
+          "type" : "string",
+          "example" : "main",
+          "description" : "页面名loading|main|order"
+        },
+        "event_name" : {
+          "type" : "string",
+          "example" : "view_item_valid",
+          "description" : "事件名"
+        },
+        "user_uuid" : {
+          "type" : "string",
+          "description" : "机顶盒唯一uuid"
+        },
+        "extra_info" : {
+          "type" : "string",
+          "example" : "201606111005261",
+          "description" : "备注信息"
+        },
+        "timestamp" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2017-05-01 00:00:00",
+          "description" : "此次访问时间戳，鉴权时后端返回"
+        },
+        "key_word" : {
+          "type" : "string",
+          "description" : "按键KEY_UP|KEY_DOWN|KEY_RIGTH|KEY_LEFT|KEY_OK"
+        },
+        "operaid" : {
+          "type" : "string",
+          "example" : "550000",
+          "description" : "运营商ID"
+        }
+      },
+      "description" : "行为数据请求DTO"
+    },
+    "device.AuthDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "data" : {
+          "$ref" : "#/definitions/device.AuthDTO.Data"
+        }
+      },
+      "description" : "AAA鉴权DTO"
+    },
+    "device.AuthDTO.Data" : {
+      "type" : "object",
+      "properties" : {
+        "expiresIn" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "accessToken" : {
+          "type" : "string",
+          "example" : "mDcixPILjZQ=",
+          "description" : "加密串"
+        },
+        "timestamp" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "登录时间"
+        },
+        "user" : {
+          "$ref" : "#/definitions/device.AuthDTO.User"
+        }
+      }
+    },
+    "device.AuthDTO.User" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1
+        },
+        "nickName" : {
+          "type" : "string",
+          "example" : "51aff5ab-9937-44f9-b0f0-a06c6ce1274f",
+          "description" : "UUID匿名"
+        },
+        "phone" : {
+          "type" : "string",
+          "example" : "13548027888",
+          "description" : "如果曾经输入过电话，则这里告知"
+        }
+      }
+    },
+    "device.WxuserDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "url" : {
+          "type" : "string",
+          "description" : "手机扫码登录地址，status为1100时使用"
+        },
+        "qrcode" : {
+          "type" : "string",
+          "description" : "二维码图片地址，status为1100时使用"
+        },
+        "accessToken" : {
+          "type" : "string",
+          "description" : "携带用户openid的新accessToken"
+        },
+        "headImg" : {
+          "type" : "string",
+          "example" : "http://....",
+          "description" : "用户头像"
+        },
+        "nickName" : {
+          "type" : "string",
+          "description" : "用户昵称"
+        },
+        "weixinId" : {
+          "type" : "string",
+          "description" : "微信openId"
+        },
+        "loginTime" : {
+          "type" : "string",
+          "description" : "登录时间"
+        }
+      },
+      "description" : "查询登录状态DTO"
+    },
+    "dvb.InfoDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "直播频道id"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "直播频道名"
+        },
+        "logo" : {
+          "type" : "string",
+          "description" : "直播频道logo"
+        },
+        "maskFull" : {
+          "type" : "string",
+          "description" : "全屏遮挡"
+        },
+        "playUrl" : {
+          "type" : "string",
+          "description" : "直播播放地址串"
+        },
+        "callNumber" : {
+          "type" : "string",
+          "description" : "400电话"
+        },
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "直播类型。1：普通直播。2：真直播。3：伪直播。前端只需单独处理伪直播，伪直播没有直播地址，而是由前端请求playbill接口，根据当前时间决定播放什么。"
+        }
+      },
+      "description" : "直播频道信息DTO"
+    },
+    "dvb.ListDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "直播频道数"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "直播频道详情",
+          "items" : {
+            "$ref" : "#/definitions/dvb.ListDTO.Data"
+          }
+        }
+      },
+      "description" : "直播频道列表DTO"
+    },
+    "dvb.ListDTO.Data" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "description" : "直播频道id"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "直播频道名"
+        },
+        "logo" : {
+          "type" : "string",
+          "description" : "直播频道logo"
+        },
+        "playUrl" : {
+          "type" : "string",
+          "description" : "直播播放地址串"
+        },
+        "mask" : {
+          "type" : "string",
+          "description" : "小屏遮挡"
+        },
+        "callNumber" : {
+          "type" : "string",
+          "description" : "400电话"
+        },
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "直播类型。1：普通直播。2：真直播。3：伪直播。前端只需单独处理伪直播，伪直播没有直播地址，而是由前端请求playbill接口，根据当前时间决定播放什么。"
+        }
+      },
+      "description" : "直播频道列表data的DTO"
+    },
+    "dvb.PlaybillDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "直播频道id"
+        },
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "直播类型。1：普通直播。2：真直播。3：伪直播。前端只需单独处理伪直播，伪直播没有直播地址，而是由前端请求playbill接口，根据当前时间决定播放什么。"
+        },
+        "currentTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "服务器当前时间"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "节目单节目个数"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "节目单详情",
+          "items" : {
+            "$ref" : "#/definitions/dvb.PlaybillDTO.Data"
+          }
+        }
+      },
+      "description" : "直播频道节目单列表DTO"
+    },
+    "dvb.PlaybillDTO.Data" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "节目名"
+        },
+        "price" : {
+          "type" : "string",
+          "description" : "商品价格"
+        },
+        "startTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "节目开始时间"
+        },
+        "endTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "节目结束时间"
+        },
+        "video" : {
+          "description" : "伪直播视频",
+          "$ref" : "#/definitions/dvb.PlaybillDTO.video"
+        }
+      },
+      "description" : "直播频道节目单列表data的DTO"
+    },
+    "dvb.PlaybillDTO.video" : {
+      "type" : "object",
+      "properties" : {
+        "titleAssetId" : {
+          "type" : "string",
+          "example" : "OTHE9420160606000034"
+        },
+        "folderAssetId" : {
+          "type" : "string",
+          "example" : "MANU0000000000230565"
+        },
+        "contentType" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "url" : {
+          "type" : "string"
+        }
+      },
+      "description" : "伪直播的视频信息，此处和原来展品接口里的vod处理上是一样的"
+    },
+    "global.MessageDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "qianmi" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/global.MessageDTO.Qianmi"
+          }
+        }
+      },
+      "description" : "全局消息DTO"
+    },
+    "global.MessageDTO.Qianmi" : {
+      "type" : "object",
+      "properties" : {
+        "infoType" : {
+          "type" : "string",
+          "example" : "receipt",
+          "description" : "receipt为购买商品成功回执"
+        },
+        "url" : {
+          "type" : "string"
+        },
+        "receipt" : {
+          "$ref" : "#/definitions/global.MessageDTO.Receipt"
+        }
+      }
+    },
+    "global.MessageDTO.Receipt" : {
+      "type" : "object",
+      "properties" : {
+        "orderNo" : {
+          "type" : "string",
+          "description" : "订单号"
+        },
+        "productName" : {
+          "type" : "string",
+          "description" : "商品名"
+        }
+      }
+    },
+    "global.ScrolltipsDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "info" : {
+          "type" : "string",
+          "example" : "address+' '+name+' '+'刚刚通过'+source(手机支付|电话)+'购买'+'   '+...."
+        }
+      }
+    },
+    "history.ListDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 13,
+          "description" : "总条数"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Data"
+          }
+        }
+      }
+    },
+    "history.PositionDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "productId" : {
+          "type" : "string",
+          "example" : "201605102112581",
+          "description" : "请求的历史商品productId"
+        },
+        "publishUuid" : {
+          "type" : "string",
+          "description" : "发布的uuid，配合新版launcher接口"
+        },
+        "pageIdx" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1,
+          "description" : "在首页列表第几页"
+        },
+        "pageSize" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 10,
+          "description" : "首页列表每页请求条数"
+        },
+        "itemIndex" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "在该页的第几个条目，从0开始"
+        }
+      },
+      "description" : "status为5001 表示该商品已下架，在首页商品列表中已不存在，不能通过历史跳转到首页观看"
+    },
+    "order.ListDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "url" : {
+          "type" : "string",
+          "description" : "手机扫码登录地址，status为1100时使用"
+        },
+        "qrcode" : {
+          "type" : "string",
+          "description" : "二维码图片地址，status为1100时使用"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 13,
+          "description" : "总条数"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/order.ListDTO.Data"
+          }
+        }
+      }
+    },
+    "order.ListDTO.Data" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string",
+          "description" : "订单编号"
+        },
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "订单状态，1.已付款 3.申请退款 4.退款中 5.拒绝退款 6.退款成功 7.发货 11.用户收货 12.申请退货 13.拒绝退货 14.同意退货 15.退款中 16.退款成功"
+        },
+        "createTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2016-8-18 04:15:23",
+          "description" : "订单创建时间"
+        },
+        "goodsId" : {
+          "type" : "string",
+          "description" : "商品ID"
+        },
+        "goodsName" : {
+          "type" : "string",
+          "description" : "商品名称"
+        },
+        "goodsDesc" : {
+          "type" : "string",
+          "description" : "商品描述"
+        },
+        "goodsImg" : {
+          "type" : "string",
+          "description" : "根据商品ID取goods表的big_img_url字段"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "购买数量"
+        },
+        "price" : {
+          "type" : "number",
+          "example" : 200.0,
+          "description" : "订单实际金额"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "杨羊",
+          "description" : "收货人"
+        },
+        "address" : {
+          "type" : "string",
+          "example" : "四川成都德商国际201",
+          "description" : "收货人详细地址"
+        },
+        "mobile" : {
+          "type" : "string",
+          "example" : "12312312312",
+          "description" : "收货人电话号码"
+        },
+        "kdName" : {
+          "type" : "string",
+          "description" : "物流名称"
+        },
+        "kdCode" : {
+          "type" : "string",
+          "description" : "物流码"
+        },
+        "kdTime" : {
+          "type" : "string",
+          "description" : "物流信息时间"
+        },
+        "kdInfo" : {
+          "type" : "string",
+          "description" : "物流信息"
+        },
+        "warnTime" : {
+          "type" : "string",
+          "description" : "提醒时间，前端发出的最近催货时间"
+        }
+      }
+    },
+    "publish.InfoDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 15,
+          "description" : "publish的id"
+        },
+        "number_list" : {
+          "type" : "string",
+          "example" : "1",
+          "description" : "发布编号"
+        },
+        "waitImage" : {
+          "type" : "string",
+          "example" : "http://img.cnmo-img.com.cn/1294_600x375/1293817.jpg",
+          "description" : "视频切换等待图"
+        },
+        "video" : {
+          "description" : "视频信息",
+          "$ref" : "#/definitions/publish.InfoDTO.Video"
+        },
+        "goods" : {
+          "description" : "商品信息",
+          "$ref" : "#/definitions/publish.InfoDTO.Goods"
+        }
+      }
+    },
+    "publish.InfoDTO.Goods" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "商品ID"
+        },
+        "productId" : {
+          "type" : "string",
+          "example" : "201606111005261",
+          "description" : "三方平台统一的productId"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "小米平衡车2",
+          "description" : "商品名"
+        },
+        "desc" : {
+          "type" : "string",
+          "description" : "商品描述"
+        },
+        "image" : {
+          "type" : "string",
+          "example" : "http://img.cnmo-img.com.cn/1294_600x375/1293817.jpg",
+          "description" : "商品图片"
+        },
+        "cartImage" : {
+          "type" : "string",
+          "example" : "http://img.cnmo-img.com.cn/1294_600x375/1293817.jpg",
+          "description" : "订单页商品图片"
+        },
+        "m4a" : {
+          "type" : "string",
+          "description" : "超声波链接"
+        },
+        "qianmi" : {
+          "$ref" : "#/definitions/publish.InfoDTO.Qianmi"
+        }
+      }
+    },
+    "publish.InfoDTO.Qianmi" : {
+      "type" : "object",
+      "properties" : {
+        "price" : {
+          "type" : "number",
+          "example" : 1800.0,
+          "description" : "价格,由千米平台获得，受千米平台控制"
+        },
+        "reducedPrice" : {
+          "type" : "number",
+          "example" : 1600.0,
+          "description" : "优惠价"
+        },
+        "countDown" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 54324,
+          "description" : "折扣倒计时时间，单位秒，-1表示不在折扣时间内"
+        },
+        "reducedEndTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2016-05-12 00:00:00",
+          "description" : "折扣截止时间"
+        },
+        "stock" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "库存（预留）"
+        },
+        "qianmiUrl" : {
+          "type" : "string",
+          "example" : "http://xxxx",
+          "description" : "直接购买链接"
+        },
+        "qianmiAllUrl" : {
+          "type" : "string",
+          "example" : "http://xxxx",
+          "description" : "根据请求的stb_user拼接stbId和operaId的链接，count未拼接"
+        },
+        "qianmiQrcode" : {
+          "type" : "string",
+          "example" : "http://xxxx",
+          "description" : "后台根据机顶盒生成对应商品购买url的二维码图片"
+        },
+        "providerName" : {
+          "type" : "string",
+          "example" : "三佳购物",
+          "description" : "商品供货方名字"
+        },
+        "callNumber" : {
+          "type" : "string",
+          "example" : "400-1717-888",
+          "description" : "商品供货方400电话"
+        },
+        "callPrefix" : {
+          "type" : "string",
+          "example" : "免费订购热线",
+          "description" : "免费咨询热线"
+        },
+        "detailCount" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "详情图数量，若为0则无详情。详情图地址规则：i从0遍历到count-1，安卓为prefix + i + postfix，dvb为prefix + dvb_ + i + postfix"
+        },
+        "detailPrefix" : {
+          "type" : "string",
+          "example" : "http://localhost:8070/download/qianmi_detail/201611021626071/",
+          "description" : "详情图前缀"
+        },
+        "detailPostfix" : {
+          "type" : "string",
+          "example" : ".jpg",
+          "description" : "详情图后缀"
+        },
+        "detailHeight" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "dvb的详情图的总高度"
+        }
+      }
+    },
+    "publish.InfoDTO.Video" : {
+      "type" : "object",
+      "properties" : {
+        "duration" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 55,
+          "description" : "时长（秒）"
+        },
+        "sd" : {
+          "type" : "string",
+          "example" : "http://115.29.210.40/a.mp4",
+          "description" : "mp4_800"
+        },
+        "hd" : {
+          "type" : "string",
+          "example" : "http://115.29.210.40/a.mp4",
+          "description" : "mp4_2000"
+        },
+        "uhd" : {
+          "type" : "string",
+          "example" : "http://115.29.210.40/a.mp4",
+          "description" : "mp4_7000"
+        },
+        "vod" : {
+          "description" : "当不处于vod模式时，vod为null",
+          "$ref" : "#/definitions/publish.InfoDTO.Vod"
+        }
+      }
+    },
+    "publish.InfoDTO.Vod" : {
+      "type" : "object",
+      "properties" : {
+        "titleAssetId" : {
+          "type" : "string",
+          "example" : "OTHE9420160606000034"
+        },
+        "folderAssetId" : {
+          "type" : "string",
+          "example" : "MANU0000000000230565"
+        },
+        "contentType" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "url" : {
+          "type" : "string"
+        }
+      }
+    },
+    "publish.ListDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 13,
+          "description" : "总条数"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/publish.ListDTO.Data"
+          }
+        }
+      },
+      "description" : "查询发布列表的几个接口共用的DTO"
+    },
+    "publish.ListDTO.Data" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "publish的id，请求publish的info接口时使用"
+        },
+        "videoFlag" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "0，没有视频，1，有视频"
+        },
+        "goods" : {
+          "description" : "如果是纯视频的发布，这里将为空",
+          "$ref" : "#/definitions/publish.ListDTO.Goods"
+        }
+      }
+    },
+    "publish.ListDTO.Goods" : {
+      "type" : "object",
+      "properties" : {
+        "productId" : {
+          "type" : "string",
+          "example" : "201606111005261",
+          "description" : "三方平台统一的productId"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "小米平衡车2",
+          "description" : "商品名"
+        },
+        "image" : {
+          "type" : "string",
+          "example" : "http://img.cnmo-img.com.cn/1294_600x375/1293817.jpg",
+          "description" : "商品图片"
+        },
+        "price" : {
+          "type" : "number",
+          "example" : 1800.0,
+          "description" : "价格,由千米平台获得，受千米平台控制"
+        },
+        "reducedPrice" : {
+          "type" : "number",
+          "example" : 1600.0,
+          "description" : "优惠价"
+        }
+      }
+    },
+    "publishAlbum.InfoDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "类型，1，专题，2，分类"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "专题/分类ID"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "运动",
+          "description" : "专题/分类名"
+        },
+        "image" : {
+          "type" : "string",
+          "example" : "http://p.qpic.cn/videoyun/0/200004672_9e61fb0cb9a711e5b4732d11c2cae25d_1/640",
+          "description" : "专题/分类背景"
+        },
+        "activityStatus" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "如果是专题且有活动，此字段表示活动状态，默认0无活动。1，活动未开始，2，活动进行中，3，活动已结束"
+        }
+      }
+    },
+    "publishAlbum.ListDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 6,
+          "description" : "专题/分类总数"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/publishAlbum.ListDTO.Data"
+          }
+        }
+      }
+    },
+    "publishAlbum.ListDTO.Data" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "类型，1，专题，2，分类"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "专题/分类ID"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "运动",
+          "description" : "专题/分类名"
+        },
+        "size" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 50,
+          "description" : "最大展示数"
+        }
+      },
+      "description" : "status字段仅在info接口里有用"
+    },
+    "search.PublishDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 13,
+          "description" : "总条数"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/publish.ListDTO.Data"
+          }
+        },
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 0,
+          "description" : "是否找到匹配结果，0没有，1找到了。无匹配时，count将为0"
+        }
+      },
+      "description" : "搜索接口的发布dto"
+    },
+    "showgoods.QrcodeDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 13,
+          "description" : "订购数"
+        },
+        "qianmiQrcode" : {
+          "type" : "string",
+          "example" : "http://.......",
+          "description" : "二维码图片地址"
+        }
+      }
+    },
+    "template.ButtonDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/template.ButtonDTO.Data"
+          }
+        }
+      }
+    },
+    "template.ButtonDTO.Data" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "按钮类型，1，用户中心，2，用户须知，3，其他（跳url）"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "按钮名称"
+        },
+        "imageUrl" : {
+          "type" : "string",
+          "description" : "按钮图片"
+        },
+        "url" : {
+          "type" : "string",
+          "description" : "安卓跳转链接"
+        },
+        "dvbUrl" : {
+          "type" : "string",
+          "description" : "dvb跳转链接"
+        }
+      }
+    },
+    "template.HandpickedDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "recommend" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/template.HandpickedDTO.Recommend"
+          }
+        },
+        "album" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/template.HandpickedDTO.Album"
+          }
+        }
+      }
+    },
+    "template.HandpickedDTO.Album" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "id，请求publishAlbum|classification的info接口时使用"
+        },
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "内容类型，2.发布专题，3.商品分类"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "六一专题",
+          "description" : "专题或分类的名称"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/template.HandpickedDTO.Data"
+          }
+        }
+      },
+      "description" : "第七个及以后的专题或分类数据"
+    },
+    "template.HandpickedDTO.Data" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "publish的id，请求publish的info接口时使用"
+        },
+        "videoFlag" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "0，没有视频，1，有视频"
+        },
+        "goods" : {
+          "description" : "如果是纯视频的发布，这里将为空",
+          "$ref" : "#/definitions/template.HandpickedDTO.Goods"
+        }
+      }
+    },
+    "template.HandpickedDTO.Goods" : {
+      "type" : "object",
+      "properties" : {
+        "productId" : {
+          "type" : "string",
+          "example" : "201606111005261",
+          "description" : "三方平台统一的productId"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "小米平衡车2",
+          "description" : "商品名"
+        },
+        "image" : {
+          "type" : "string",
+          "example" : "http://img.cnmo-img.com.cn/1294_600x375/1293817.jpg",
+          "description" : "商品图片"
+        },
+        "price" : {
+          "type" : "number",
+          "example" : 1800.0,
+          "description" : "价格,由千米平台获得，受千米平台控制"
+        },
+        "reducedPrice" : {
+          "type" : "number",
+          "example" : 1600.0,
+          "description" : "优惠价"
+        }
+      }
+    },
+    "template.HandpickedDTO.Recommend" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "内容类型，1.发布，2.发布专题，3.商品分类"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "id，请求publish|publishAlbum|classification的info接口时使用"
+        },
+        "videoFlag" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "0，没有视频，1，有视频"
+        },
+        "image" : {
+          "type" : "string",
+          "example" : "http://img.cnmo-img.com.cn/1294_600x375/1293817.jpg",
+          "description" : "图片"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "如果是专题或分类，打开后应展示的数量"
+        },
+        "video" : {
+          "description" : "目前只有第一个位置可能用到视频的信息，用于直接播放",
+          "$ref" : "#/definitions/publish.InfoDTO.Video"
+        }
+      },
+      "description" : "推荐位，固定六个"
+    },
+    "template.LauncherDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "updateTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2016-11-24 17:24:23",
+          "description" : "首屏更新时间"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 10,
+          "description" : "模块个数，包含视频窗那个模块"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/template.ModuleDTO"
+          }
+        }
+      }
+    },
+    "template.ModuleDTO" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "模块类型1，2，3，4，5"
+        },
+        "sort" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "模块排序"
+        },
+        "item" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/template.ScreenDTO"
+          }
+        }
+      }
+    },
+    "template.ScreenDTO" : {
+      "type" : "object",
+      "properties" : {
+        "images" : {
+          "type" : "string",
+          "example" : "http://221.237.156.219:9997/download/goods_image/20160601_144035_760013.jpg",
+          "description" : "模块内item图，大小根据模块类型"
+        },
+        "type" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "类型：1.发布专题，2.发布，3.广告"
+        },
+        "content" : {
+          "type" : "string",
+          "example" : "1",
+          "description" : "根据type决定意义：1.专题的id，2.发布的uuid，3.广告链接"
+        }
+      }
+    },
+    "vod.UrlDTO" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2000,
+          "description" : "状态。(2000：返回成功；1002：无效的accessToken；1003：operatorId不匹配；1004：参数错误；1005：服务器内部错误；1100：数据不存在(例外，微信相关接口里表示用户没有用微信扫码登录或已注销)；1500：调用第三方接口失败；5001：商品不存在；5051：视频不存在；5052：已收藏)"
+        },
+        "displayRunTime" : {
+          "type" : "string"
+        },
+        "previewAssetId" : {
+          "type" : "string",
+          "example" : "OTHE0000377893010300"
+        },
+        "purchaseToken" : {
+          "type" : "string",
+          "example" : "1380243051"
+        },
+        "rtsp" : {
+          "type" : "string",
+          "example" : "rtsp://10.2.4.120:554/GZCTV,OTHE0000377893010300?areaCode=0&userId=8851003900444263&spCode=1&sessionId=427214323&urlEndTime=20160608T115336Z&sessionSign=89bb4611aa8f9b400b0b1cdf72c5b488&startTime=0&endTime=&vcrInfo=null&productId=MFDB&tryFlag=0&subId=123&resourceId=104029767&purchaseToken=1380243051&resourceName=天意香好山好水樟木五斗柜&columnId=230565&playPath=/互动点播/流金岁月/天意香好山好水樟木五斗柜"
+        },
+        "startTime" : {
+          "type" : "string"
+        }
+      },
+      "description" : "vod播放地址DTO。注意返回的RTSP串中的areaCode要替换成js api获取的码，且要插CA卡进行播放"
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<script type="text/javascript">
+    var personMain = {
+        pdialog: $.pdialog.getCurrent(),
+        save: function (form) {
+            var oldPass = $('#oldReal', this.pdialog).val();
+            if (oldPass == '') {
+                alertMsg.warn('旧密码不能为空');
+                return false;
+            }
+            var newPass = $('#newReal', this.pdialog).val();
+            if (oldPass == newPass) {
+                alertMsg.warn('新密码不得为旧密码');
+                return false;
+            }
+            var newPass2 = $('#newReal2', this.pdialog).val();
+            if (newPass != '' && newPass != newPass2) {
+                alertMsg.warn('新密码与重复密码不一致');
+                return false;
+            }
+            $('[name="oldPassword"]', this.pdialog).val($.md5(oldPass));
+            if (newPass != '') {
+                $('[name="newPassword"]', this.pdialog).val($.md5(newPass));
+            }
+            return validateCallback(form, navTabAjaxDone);
+        }
+    };
+</script>
+<form method="post" action="admin/person/save" class="pageForm" onsubmit="return personMain.save(this);">
+    <div class="pageFormContent nowrap" layoutH="56">
+        <input type="hidden" name="model.id" value="${model.id}"/>
+        <table class="dialogTable">
+            <tr>
+                <td>登录名</td>
+                <td>${model.username}</td>
+            </tr>
+            <tr>
+                <td>昵称</td>
+                <td>
+                    <input name="model.realname" value="${model.realname}" type="text" placeholder="昵称">
+                </td>
+            </tr>
+            <tr>
+                <td>旧密码</td>
+                <td>
+                    <input id="oldReal" type="password" placeholder="原始密码">
+                    <input name="oldPassword" type="hidden">
+                </td>
+            </tr>
+            <tr>
+                <td>新密码</td>
+                <td>
+                    <input id="newReal" type="password" placeholder="新密码">
+                    <input name="newPassword" type="hidden">
+                </td>
+            </tr>
+            <tr>
+                <td>重复密码</td>
+                <td>
+                    <input id="newReal2" type="password" placeholder="重复密码">
+                </td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td>
+                    <input name="model.email" type="email" value="${model.email}" placeholder="email">
+                </td>
+            </tr>
+            <tr>
+                <td>手机号</td>
+                <td>
+                    <input name="model.tel" type="text" value="${model.tel}" placeholder="手机号">
+                </td>
+            </tr>
+            <tr>
+                <td>备注</td>
+                <td>
+                    <textarea rows="3" cols="20" name="model.remark" placeholder="备注">${model.remark}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    1. 修改基本信息需要输入旧密码。<br>
+                    2. 修改密码需要输入旧密码、新密码。
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="formBar">
+        <ul>
+            <li>
+                <div class="buttonActive">
+                    <div class="buttonContent">
+                        <button type="submit">保存</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>

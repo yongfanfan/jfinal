@@ -1,0 +1,58 @@
+<!--:
+var action = "system/log/list";
+var searchContent = {
+-->
+<select name="attr.logType" title="">
+    <option value="">--类型--</option>
+    <option value="1" ${attr.logType==1?'selected'}>数据</option>
+    <option value="2" ${attr.logType==2?'selected'}>系统</option>
+</select>
+<!--:
+};
+var panelBar = {
+-->
+<ul class="toolBar">
+    <li>
+        <a class="edit" href="system/log/view/{did}" target="dialog" rel="log-view" width="820" height="440">
+            <span>查看</span>
+        </a>
+    </li>
+</ul>
+<!--:
+};
+var table = {
+-->
+<thead>
+<tr>
+    <th>序号</th>
+    <th orderfield="create_time" class="${haitai.orderClass('create_time', orderField!, orderDirection!)}">时间</th>
+    <th orderfield="create_id" class="${haitai.orderClass('create_id', orderField!, orderDirection!)}">操作人</th>
+    <th orderfield="log_type" class="${haitai.orderClass('log_type', orderField!, orderDirection!)}">类型</th>
+    <th>描述</th>
+</tr>
+</thead>
+<tbody>
+<!--:for (item in page.list) {-->
+<tr target="did" rel="${item.id}">
+    <td>${itemLP.index}</td>
+    <td>${item.createTime, 'yyyy-MM-dd HH:mm:ss'}</td>
+    <td>${@usName.get(item.createId)}</td>
+    <td>${item.logType == 1 ? "数据" : "系统"}</td>
+    <td>
+        <!--:if (item.logType == 1) {-->
+        ${item.operObject}模块${item.operType}了主键为${item.operId}的数据
+        <!--:} else if (item.logType == 2) {-->
+        用户${item.operType}了
+        <!--:}-->
+    </td>
+</tr>
+<!--:}-->
+</tbody>
+<!--:
+};
+layout("/template/navTabPage.html",
+        {action : action,
+         searchContent : searchContent,
+         panelBar : panelBar,
+         table : table}) {}
+-->

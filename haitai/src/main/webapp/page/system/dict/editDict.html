@@ -1,0 +1,64 @@
+<script type="text/javascript">
+    var dictEditDictEdit = {
+        delete: function (id) {
+            $.ajax({
+                type: 'POST',
+                url: 'system/dict/deleteDict/' + id,
+                dataType: "json",
+                success: dialogAjaxDone,
+                error: DWZ.ajaxError
+            });
+        }
+    };
+</script>
+
+<form method="post" id="form" action="system/dict/saveDict" class="pageForm required-validate"
+      onsubmit="return validateCallback(this, dialogAjaxDone);">
+    <div class="pageFormContent nowrap" layoutH="56">
+        <input type="hidden" name="model.id" value="${model.id}"/>
+        <table class="dialogTable">
+            <tr>
+                <td>类型</td>
+                <td>
+                    <input type="text" name="model.dictType" value="${model.dictType}" title=""
+                           ${model.id!=null?"readonly"}/>
+                </td>
+            </tr>
+            <tr>
+                <td>名称</td>
+                <td><input type="text" name="model.dictName" value="${model.dictName}" title=""/></td>
+            </tr>
+            <tr>
+                <td>备注</td>
+                <td><input type="text" name="model.dictRemark" value="${model.dictRemark}" title=""/></td>
+            </tr>
+        </table>
+    </div>
+    <div class="formBar">
+        <ul>
+            <li>
+                <div class="buttonActive">
+                    <div class="buttonContent">
+                        <button type="submit">保存</button>
+                    </div>
+                </div>
+            </li>
+            <!--:if (model.id != null) {-->
+            <li>
+                <div class="buttonActive">
+                    <div class="buttonContent">
+                        <button type="button" onclick="dictEditDictEdit.delete(${model.id});">删除</button>
+                    </div>
+                </div>
+            </li>
+            <!--:}-->
+            <li>
+                <div class="button">
+                    <div class="buttonContent">
+                        <button type="button" class="close">取消</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>

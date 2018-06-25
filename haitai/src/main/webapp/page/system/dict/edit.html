@@ -1,0 +1,52 @@
+<form method="post" action="system/dict/save" class="pageForm required-validate"
+      onsubmit="return validateCallback(this, dialogAjaxDone);">
+    <div class="pageFormContent nowrap" layoutH="56">
+        <input type="hidden" name="model.id" value="${model.id}"/>
+        <table class="dialogTable">
+            <tr>
+                <td>类型</td>
+                <td>
+                    <select name="model.dictType" ${model.id!=null?'disabled'} title="">
+                        <!--:for (item in dicts) {-->
+                        <option value="${item.dictType}" ${item.dictType==model.dictType?'selected'}>
+                            ${item.dictName}
+                        </option>
+                        <!--:}-->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>名称</td>
+                <td><input type="text" name="model.detailName" value="${model.detailName}" title=""/></td>
+            </tr>
+            <tr>
+                <td>编号</td>
+                <td><input type="text" name="model.detailCode" value="${model.detailCode}" title=""/></td>
+            </tr>
+            <tr>
+                <td>排序</td>
+                <td>
+                    <input type="text" name="model.detailSort" value="${model.detailSort!'10'}" title=""/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="formBar">
+        <ul>
+            <li>
+                <div class="buttonActive">
+                    <div class="buttonContent">
+                        <button type="submit">保存</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="button">
+                    <div class="buttonContent">
+                        <button type="button" class="close">取消</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>

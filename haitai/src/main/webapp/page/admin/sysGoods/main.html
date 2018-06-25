@@ -1,0 +1,84 @@
+<!--:
+var action = "admin/sysGoods/list";
+var searchContent = {
+-->
+<input type="text" name="attr.name" value="${attr.name}" placeholder="请输入商品名称"/>
+<!--:
+};
+var panelBar = {
+-->
+<ul class="toolBar">
+    <li>
+        <a class="icon" href="admin/sysGoods/edit/{itemid}" target="dialog" rel="sysGood-edit" width="800" height="600">
+            <span>修改</span>
+        </a>
+    </li>
+    <li class="line"></li>
+    <li>
+         <a class="delete" title="确实要删除这些商品吗?" target="selectedTodo" rel="ids" href="admin/sysGoods/delete">
+                <span>批量删除</span>
+            </a>
+    </li> 
+    <li class="line"></li>
+    <li>
+         <a class="icon" href="admin/sysGoods/excel" target="dialog" rel="sysGood-excel" width="800" height="600" >
+                <span>导入商品EXCEL</span>
+         </a>
+    </li> 
+</ul>
+<!--:
+};
+var table = {
+-->
+<thead>
+<tr>
+     <th><input type="checkbox" class="checkboxCtrl" group="ids" title=""/></th>
+    <th>图片</th>
+    <th>商品名称</th>
+    <th>价格</th>
+    <th>商品id</th>
+    <th>分类名称</th>
+    <th>供货商</th>
+    <th>更新时间</th>
+</tr>
+</thead>
+<tbody>
+<!--:for (item in page.list) {-->
+<tr target="itemid" rel="${item.id}">
+    <td><input type="checkbox" name="ids" value="${item.id}" title=""/></td>
+    <td><!--:if (haitai.isNotEmpty(item.imageUrl)) {-->
+        <a href="${item.imageUrl}" target="_blank" style="text-decoration:none;">
+            <img alt="商品图片" title="点击浏览" src="${item.imageUrl}" width=80" height="50">
+        </a>
+        <!--:}--></td>
+    <td>${item.name}</td>
+    <td>
+        ${item.price}
+    </td>
+    <td>${item.productId}</td>
+    <td>
+    <!--: for(type in types) {-->
+        <!--: if(type.id == item.goodsType) {-->
+        ${type.name}
+        <!--:}-->
+    <!--:}-->
+    </td>
+    <td>
+    
+    <!--: for(type in suppliers) {-->
+        <!--: if(type.id == item.supplierId) {-->
+        ${type.name}
+        <!--:}-->
+    <!--:}--></td>
+    <td>${item.updateTime, ''}</td>
+</tr>
+<!--:}-->
+</tbody>
+<!--:
+};
+layout("/template/navTabPage.html",
+        {action : action,
+         searchContent : searchContent,
+         panelBar : panelBar,
+         table : table}) {}
+-->

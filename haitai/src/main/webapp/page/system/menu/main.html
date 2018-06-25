@@ -1,0 +1,114 @@
+<!--:
+var action = "system/menu/list";
+var searchContent = {
+-->
+<select name="attr.status" title="">
+    <option value="">状态</option>
+    <option value="1" ${attr.status==1?'selected'}>显示</option>
+    <option value="2" ${attr.status==2?'selected'}>隐藏</option>
+</select>
+<select name="attr.type" title="">
+    <option value="">权限类型</option>
+    <option value="1" ${attr.type==1?'selected'}>菜单权限</option>
+    <option value="2" ${attr.type==2?'selected'}>渠道权限</option>
+</select>
+<select name="attr.parentId" title="">
+    <option value="">父菜单</option>
+    <!--:for (item in meName) {-->
+    <option value="${item.key}" ${item.key==attr.parentId?'selected'}>${item.value}</option>
+    <!--:}-->
+</select>
+<input type="text" name="attr.name" value="${attr.name}" placeholder="请输入名称"/>
+<!--:
+};
+var panelBar = {
+-->
+<ul class="toolBar">
+    <li>
+        <a class="edit" href="system/menu/view/{did}" target="dialog" rel="menu-view" width="820" height="440">
+            <span>查看</span>
+        </a>
+    </li>
+    <#haspermission name="system/menu/list:*">
+        <li class="line"></li>
+        <li>
+            <a class="add" href="system/menu/edit" target="dialog" rel="menu-add" width="820" height="440">
+                <span>添加菜单</span>
+            </a>
+        </li>
+        <li class="line"></li>
+        <li>
+            <a class="add" href="system/menu/addOperator" target="dialog" rel="menu-add-operator" width="820" height="440">
+                <span>添加渠道</span>
+            </a>
+        </li>
+        <li class="line"></li>
+        <li>
+            <a class="edit" href="system/menu/edit/{did}" target="dialog" rel="menu-edit" width="820" height="440">
+                <span>修改</span>
+            </a>
+        </li>
+        <li class="line"></li>
+        <li>
+            <a class="delete" href="system/menu/delete/{did}" target="ajaxTodo" title="确定要删除吗?">
+                <span>删除</span>
+            </a>
+        </li>
+    </#haspermission>
+</ul>
+<!--:
+};
+var table = {
+-->
+<thead>
+<tr>
+    <th>序号</th>
+    <th orderfield="parent_id" class="${haitai.orderClass('parent_id', orderField!, orderDirection!)}">上级菜单</th>
+    <th orderfield="url_key" class="${haitai.orderClass('url_key', orderField!, orderDirection!)}">菜单key</th>
+    <th orderfield="name" class="${haitai.orderClass('name', orderField!, orderDirection!)}">名称</th>
+    <th orderfield="url" class="${haitai.orderClass('url', orderField!, orderDirection!)}">链接地址</th>
+    <th orderfield="status" class="${haitai.orderClass('status', orderField!, orderDirection!)}">状态</th>
+    <th orderfield="type" class="${haitai.orderClass('type', orderField!, orderDirection!)}">类型</th>
+    <th orderfield="sort" class="${haitai.orderClass('sort', orderField!, orderDirection!)}">排序</th>
+</tr>
+</thead>
+<tbody>
+<!--:for (item in page.list) {-->
+<tr target="did" rel="${item.id}">
+    <td>${itemLP.index}</td>
+    <td>${@meName.get(item.parentId)}</td>
+    <td>${item.urlKey}</td>
+    <td>${item.name}</td>
+    <td>${item.url}</td>
+    <td>
+        <!--:
+        select(item.status) {
+            case 1:
+                print('显示');
+            case 2:
+                print('隐藏');
+        }
+        -->
+    </td>
+    <td>
+        <!--:
+        select(item.type) {
+            case 1:
+                print('菜单');
+            case 2:
+                print('渠道');
+        }
+        -->
+    </td>
+    <td>${item.sort}</td>
+</tr>
+<!--:}-->
+</tbody>
+<!--:
+};
+layout("/template/navTabPage.html",
+        {action : action,
+         searchContent : searchContent,
+         panelBar : panelBar,
+         table : table}) {}
+-->

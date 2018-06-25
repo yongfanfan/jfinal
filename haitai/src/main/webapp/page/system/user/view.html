@@ -1,0 +1,61 @@
+<div style="height: 389px; overflow: auto; background: #fff; border: 1px solid #ddd;">
+    <table class="dialogTable">
+        <tr>
+            <td>部门</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>登录名</td>
+            <td>${model.username}</td>
+        </tr>
+        <tr>
+            <td>真实姓名</td>
+            <td>${model.realname}</td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td>${model.password}</td>
+        </tr>
+        <tr>
+            <td>类型</td>
+            <td>
+                <!--:
+                select(model.type) {
+                    case 1:
+                        print('管理员');
+                    case 2:
+                        print('普通用户');
+                    case 3:
+                        print('前台用户');
+                    case 4:
+                        print('第三方用户');
+                    default:
+                        print('其他用户');
+                }
+                -->
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>${model.email}</td>
+        </tr>
+        <tr>
+            <td>手机号</td>
+            <td>${model.tel}</td>
+        </tr>
+        <tr>
+            <td>地址</td>
+            <td>${model.address}</td>
+        </tr>
+        <tr>
+            <td>头像地址</td>
+            <td>${model.titleUrl}</td>
+        </tr>
+        <tr>
+            <td>说明</td>
+            <td title="${model.remark}">
+                ${model.remark}
+            </td>
+        </tr>
+    </table>
+</div>

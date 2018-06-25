@@ -1,0 +1,124 @@
+<!--:
+var action = "system/wxuser/viewCoupon/" + id;
+var searchContent = {
+-->
+<select name="attr.type" title="">
+    <option value="0" ${attr.type==0?'selected':''}>全部</option>
+    <option value="1" ${attr.type==1?'selected':''}>时间内</option>
+    <option value="2" ${attr.type==2?'selected':''}>有效</option>
+    <option value="3" ${attr.type==3?'selected':''}>已使用</option>
+    <option value="4" ${attr.type==4?'selected':''}>已过期</option>
+</select>
+<!--:
+};
+var panelBar = {
+-->
+<ul class="toolBar">
+    <li>
+    <!--: if(serverType == 0){ -->
+        <a class="add" href="javascript:;" data-href="system/wxuser/sendCoupon?openId=${openId}" onclick="viewCouponMain.sendCoupon(this)">
+            <span>手动同步优惠券到内网</span>
+        </a>
+    <!--: } -->
+    </li>
+</ul>
+
+<script type="text/javascript">
+var viewCouponMain = {
+		sendCoupon: function (i) {
+			var u = $(i)[0].attributes[2].nodeValue;
+			alertMsg.confirm("确定同步所有优惠券到内网", {  
+			    okCall: function(){   
+			    	$.ajax({
+		                type: 'POST',
+		                url: u,
+		                success: function (data) {
+		                    if (data.msg == 1) {
+		                        alertMsg.correct("同步成功！！！");
+		                        return;
+		                    }
+		                },
+		                error:function(data){
+		                	console.log(data);
+		                }
+		            }); 
+			    } 
+			}); 
+        }
+}
+</script>
+<!--:
+};
+var table = {
+-->
+<thead>
+<tr>
+    <th>序号</th>
+    <th>券码</th>
+    <th>批次号</th>
+    <th>券面价格</th>
+    <th>类型</th>
+    <th>状态</th>
+    <th>范围</th>
+    <th>开始时间</th>
+    <th>结束时间</th>
+    <th>领取时间</th>
+</tr>
+</thead>
+<tbody>
+<!--:for (item in page.list) {-->
+<tr target="itemid" rel="${item.batchNo}">
+    <td>${itemLP.index}</td>
+    <td>${item.couponNo}</td>
+    <td>${item.batchNo}</td>
+    <td>${item.price}</td>
+    <td>
+        <!--:
+        select(item.ruleType) {
+            case 1:
+                print('直降');
+            case 2:
+                print('满减');
+            case 3:
+                print('满折');
+            case 4:
+                print('量折');
+        }
+        -->
+    </td>
+    <td>
+        <!--:
+        select(item.status) {
+            case 0:
+                print('未使用');
+            case 1:
+                print('已使用');
+            case 2:
+                print('已过期');
+        }
+        -->
+    </td>
+    <td>
+        <!--:
+        select(item.scopeType) {
+            case 0:
+                print('针对商品');
+            case 1:
+                print('全站');
+        }
+        -->
+    </td>
+    <td>${item.beginTime, ''}</td>
+    <td>${item.endTime, ''}</td>
+    <td>${item.utime, ''}</td>
+</tr>
+<!--:}-->
+</tbody>
+<!--:
+};
+layout("/template/dialogPage.html",
+        {action : action,
+         searchContent : searchContent,
+         panelBar : panelBar,
+         table : table}) {}
+-->

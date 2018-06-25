@@ -1,0 +1,292 @@
+@charset "utf-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    border: 0;
+}
+
+body {
+    margin: 0;
+    text-align: center;
+    background: #FFF url(../../../component/jui/themes/default/images/login_bg.png) repeat-x top;
+}
+
+#login {
+    display: block;
+    width: 950px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#login_header {
+    display: block;
+    padding-top: 40px;
+    height: 80px;
+}
+
+.login_logo {
+    float: left;
+    margin-top: 10px;
+}
+
+.login_info {
+    float: left;
+    margin-left: 10px;
+    line-height: 80px;
+    font-size: 18px;
+    color: #0088cc;
+    font-weight: bold;
+}
+
+.login_headerContent {
+    float: right;
+    display: block;
+    width: 280px;
+    height: 80px;
+    padding: 0 40px;
+    background: url(../../../component/jui/themes/default/images/login_header_bg.png) no-repeat top right;
+}
+
+.navList {
+    display: block;
+    overflow: hidden;
+    height: 20px;
+    padding-left: 28px;
+}
+
+.navList ul {
+    float: left;
+    display: block;
+    overflow: hidden;
+}
+
+.navList li {
+    float: left;
+    display: block;
+    margin-left: -1px;
+    padding: 0 10px;
+    background: url(../../../component/jui/themes/default/images/login_list.png) no-repeat 0 5px;
+}
+
+.navList a {
+    display: block;
+    white-space: nowrap;
+    line-height: 21px;
+    color: #000;
+    text-decoration: none;
+}
+
+.navList a:hover {
+    text-decoration: underline;
+}
+
+#login_content {
+    display: block;
+    position: relative;
+}
+
+.login_title {
+    display: block;
+    padding: 25px 0 0 38px;
+}
+
+.loginForm {
+    display: block;
+    width: 240px;
+    padding: 40px 20px 0 20px;
+    position: absolute;
+    right: 40px;
+    background: white;
+}
+
+.loginForm p {
+    margin: 10px 0;
+}
+
+.loginForm label {
+    float: left;
+    width: 70px;
+    padding: 0 0 0 10px;
+    line-height: 25px;
+    color: #4c4c4c;
+    font-size: 14px;
+}
+
+.loginForm input {
+    padding: 3px 2px;
+    border: 1px solid #80a5c4;
+}
+
+.loginForm .login_input {
+}
+
+.loginForm .code {
+    float: left;
+    margin-right: 5px;
+}
+
+.login_bar {
+    padding-left: 70px;
+}
+
+.login_bar .sub {
+    display: block;
+    width: 75px;
+    height: 30px;
+    border: none; /*background:url(../default/images/login_sub.png) no-repeat;*/
+    cursor: pointer;
+}
+
+.login_banner {
+    display: block;
+    height: 270px;
+}
+
+.login_main {
+    display: block;
+    height: 200px;
+    padding-right: 40px;
+    background: url(../../../component/jui/themes/default/images/login_content_bg.png) no-repeat top;
+}
+
+.helpList {
+    float: right;
+    width: 200px;
+}
+
+.helpList li {
+    display: block;
+    padding-left: 10px;
+    background: url(../../../component/jui/themes/default/images/login_list.png) no-repeat 0 -40px;
+}
+
+.helpList a {
+    line-height: 21px;
+    color: #333;
+    text-decoration: none;
+}
+
+.helpList a:hover {
+    text-decoration: underline;
+}
+
+.login_inner {
+    display: block;
+    width: 560px;
+    padding: 30px 20px 0 20px;
+}
+
+.login_inner p {
+    margin: 10px 0;
+    line-height: 150%;
+    font-size: 14px;
+    color: #666;
+}
+
+#login_footer {
+    clear: both;
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-top: solid 1px #e2e5e8;
+    color: #666;
+    text-align: center;
+}
+
+/*修改登录页样式*/
+.loginForm {
+    display: block;
+    width: 262px;
+    padding: 1px 9px 0 9px;
+    position: absolute;
+    height: 320px;
+    top: 0;
+    right: 40px;
+    background: white;
+}
+
+.login_title {
+    font-size: 25px;
+    padding: 13px 58px;
+}
+
+.loginForm .login_input {
+    padding: 3px 13px;
+    width: 200px;
+    height: 28px;
+    font-size: 19px;
+    border-radius: 3px;
+}
+
+.login_bar .sub {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 228px;
+    padding: 0 20px;
+    font-size: 20px;
+    line-height: 40px;
+    height: 40px;
+    color: #fff;
+    *zoom: 1;
+    *overflow: visible;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, .2);
+    font-weight: 400;
+    font-weight: bold \0;
+    *font-weight: 700;
+    _font-weight: 700;
+    background-color: #e66e1e;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffa800),
+    to(#e66e1e));
+    background: -moz-linear-gradient(top, #ffa800, #e66e1e);
+    filter: progid:DXImageTransform.Microsoft.gradient (startColorstr='#ffa800', endColorstr='#e66e1e');
+    background: -o-linear-gradient(top, #FFA600, #FE9200);
+    background: -ms-linear-gradient(top, #ffa800 0, #e66e1e 100%);
+    background: linear-gradient(top, #ffa800, #e66e1e);
+    border: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.login_bar {
+    padding-left: 0;
+}
+
+#form1 {
+    width: 229px;
+    margin: 0 auto;
+}
+
+.loginForm label {
+    font-weight: bold;
+    width: 62px;
+    margin-bottom: 6px;
+    padding: 0;
+}
+
+.loginForm .code {
+    height: 16px;
+    width: 75px;
+}
+

@@ -1,0 +1,54 @@
+<div style="height: 389px;overflow:auto;background: #fff;border: 1px solid #ddd;">
+    <table class="dialogTable">
+        <tr>
+            <td>上级菜单</td>
+            <td>${model.parentName}</td>
+        </tr>
+        <tr>
+            <td>菜单key</td>
+            <td>${model.urlKey}</td>
+        </tr>
+        <tr>
+            <td>名称</td>
+            <td>${model.name}</td>
+        </tr>
+        <tr>
+            <td>链接地址</td>
+            <td>${model.url}</td>
+        </tr>
+        <tr>
+            <td>状态</td>
+            <td>
+                <!--:
+                select(model.status) {
+                    case 1:
+                        print('显示');
+                    case 2:
+                        print('隐藏');
+                }
+                -->
+            </td>
+        </tr>
+        <tr>
+            <td>类型</td>
+            <td>
+                <!--:
+                select(model.type) {
+                    case 1:
+                        print('根目录');
+                    case 2:
+                        print('a标签');
+                    case 3:
+                        print('a标签_blank');
+                    case 4:
+                        print('外部url');
+                }
+                -->
+            </td>
+        </tr>
+        <tr>
+            <td>排序</td>
+            <td>${model.sort}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,30 @@
+<select id="operatorId" name="common.operatorId" onchange="operatorIdChange();" title="">
+    <!--:for(entry in configSelect){-->
+    <option value="${entry.key.operatorId}" ${common.operatorId==entry.key.operatorId?"selected":""}>
+        ${entry.key.operatorName}
+    </option>
+    <!--:}-->
+</select>
+<!--:for(entry in configSelect){-->
+<select class="operatorId2" id="${entry.key.operatorId}" title="${entry.value.~size}">
+    <!--:for(child in entry.value) {-->
+    <option value="${child.operatorId}" ${common.operatorId2==child.operatorId?"selected":""}>
+        ${child.operatorName}
+    </option>
+    <!--:}-->
+</select>
+<!--:}-->
+<script>
+    $(function () {
+        var context = null;
+        context = ${dialogFlag!0 == 0 ? 'navTab.getCurrentPanel()' : '$.pdialog.getCurrent()'};
+        var operatorId = $('#operatorId', context).val();
+        $('.operatorId2', context).css('display', 'none');
+        var $operatorId2Select = $('#' + operatorId, context);
+        //noinspection EqualityComparisonWithCoercionJS
+        if ($operatorId2Select.attr('title') != '0') {
+            $operatorId2Select.css('display', 'inline-block');
+            $operatorId2Select.prop('name', 'common.operatorId2');
+        }
+    });
+</script>

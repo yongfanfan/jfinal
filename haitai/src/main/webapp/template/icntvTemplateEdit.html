@@ -1,0 +1,26 @@
+<!--:   if (moduleLP.index == 1) {-->
+<td style="color:red;padding-left:20px">不能删除</td>
+<!--:
+        } else {
+            var ids;
+            if (flag!0 == 1){
+                ids = item[0].id;
+            } else {
+                ids = item[0].id + ',' + item[1].id + ',' + item[2].id;
+            }
+-->
+<td>
+    <!--:   if (moduleLP.index >= 3) {-->
+    <input type="button" value="上移"
+           onclick="icntvEdit.upModule('${ids}', '${template.id}')"/>
+    <br/><br/>
+    <!--:   }-->
+    <input type="button" value="删除"
+           onclick="icntvEdit.deleteModule('${ids}', '${template.id}')"/>
+    <br/><br/>
+    <!--:   if (!moduleLP.last) {-->
+    <input type="button" value="下移"
+           onclick="icntvEdit.downModule('${ids}', '${template.id}')"/>
+    <!--:   }-->
+</td>
+<!--:   }-->

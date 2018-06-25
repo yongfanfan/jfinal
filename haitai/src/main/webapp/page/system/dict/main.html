@@ -1,0 +1,95 @@
+<!--:
+var action = "system/dict/list";
+var searchContent = {
+-->
+<script type="text/javascript">
+    var dictMain = {
+        edit_dict: function () {
+            var $select = $('[name="attr.dictType"]', navTab.getCurrentPanel());
+            var i = $select.val();
+            // 将类型选择自动改为‘请选择’，这是因为类型操作提交后将自动重新查询
+            $select.val('');
+            var url = 'system/dict/editDict/?dictType=' + i;
+            $.pdialog.open(url, "editDict", "类型操作", {width: 500, height: 400});
+        }
+    };
+</script>
+<select name="attr.dictType" title="">
+    <option value="">请选择</option>
+    <!--:for (item in diName) {-->
+    <option value="${item.key}" ${item.key==attr.dictType?'selected'}>${item.value}</option>
+    <!--:}-->
+</select>
+<!--:
+};
+var panelBar = {
+-->
+<ul class="toolBar">
+    <li>
+        <a class="edit" href="system/dict/view/{did}" target="dialog" rel="dict-view" width="820" height="440">
+            <span>查看</span>
+        </a>
+    </li>
+    <#haspermission name="system/dict/list:*">
+        <li class="line"></li>
+        <li>
+            <a class="add" href="system/dict/edit" target="dialog" rel="dict-add" width="820" height="440">
+                <span>添加</span>
+            </a>
+        </li>
+        <li class="line"></li>
+        <li>
+            <a class="edit" href="system/dict/edit/{did}" target="dialog" rel="dict-edit" width="820" height="440">
+                <span>修改</span>
+            </a>
+        </li>
+        <li class="line"></li>
+        <li>
+            <a class="delete" href="system/dict/delete/{did}" target="ajaxTodo" title="确定要删除吗?">
+                <span>删除</span>
+            </a>
+        </li>
+        <li class="line"></li>
+        <li>
+            <a class="edit" onclick="dictMain.edit_dict();" href="javascript:">
+                <span>类型操作</span>
+            </a>
+        </li>
+    </#haspermission>
+</ul>
+<!--:
+};
+var table = {
+-->
+<thead>
+<tr>
+    <th>序号</th>
+    <th orderfield="dict_type" class="${haitai.orderClass('dict_type', orderField!, orderDirection!)}">类型
+    </th>
+    <th orderfield="detail_name" class="${haitai.orderClass('detail_name', orderField!, orderDirection!)}">名称
+    </th>
+    <th orderfield="detail_code" class="${haitai.orderClass('detail_code', orderField!, orderDirection!)}">编号
+    </th>
+    <th orderfield="detail_sort" class="${haitai.orderClass('detail_sort', orderField!, orderDirection!)}">排序号
+    </th>
+</tr>
+</thead>
+<tbody>
+<!--:for (item in page.list) {-->
+<tr target="did" rel="${item.id}">
+    <td>${itemLP.index}</td>
+    <td>${@diName.get(item.dictType)}</td>
+    <td>${item.detailName}(${item.id})</td>
+    <td>${item.detailCode}</td>
+    <td>${item.detailSort}</td>
+</tr>
+<!--:}-->
+</tbody>
+<!--:
+};
+layout("/template/navTabPage.html",
+        {action : action,
+         searchContent : searchContent,
+         panelBar : panelBar,
+         table : table}) {}
+-->

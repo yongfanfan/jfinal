@@ -1,0 +1,29 @@
+<div style="height: 389px;overflow:auto;background: #fff;border: 1px solid #ddd;">
+    <table class="dialogTable">
+        <tr>
+            <td>名称</td>
+            <td>${model.name}</td>
+        </tr>
+        <tr>
+            <td>状态</td>
+            <td>
+                <!--:
+                select(model.status) {
+                    case 1:
+                        print('显示');
+                    case 2:
+                        print('隐藏');
+                }
+                -->
+            </td>
+        </tr>
+        <tr>
+            <td>排序</td>
+            <td>${model.sort}</td>
+        </tr>
+        <tr>
+            <td>说明</td>
+            <td title="${model.remark}">${model.remark}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,37 @@
+<div class="pageHeader">
+    <form id="pagerForm" action="${action}" method="post" onsubmit="return navTabSearch(this);">
+        <div class="searchBar">
+            <div class="searchContent">
+                ${searchContent}
+            </div>
+            <div class="subBar">
+                <ul>
+                    <!--: if(noReset!0 == 0){ -->
+                    <li>
+                        <div class="buttonActive">
+                            <div class="buttonContent">
+                                <button type="button" onclick="myResetSearch(this);">重置</button>
+                            </div>
+                        </div>
+                    </li>
+                    <!--: } // 当存在变量noReset且值不为0，则不渲染重置按钮 -->
+                    <li>
+                        <div class="buttonActive">
+                            <div class="buttonContent">
+                                <button type="submit">查询</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <div class="panelBar">
+        ${panelBar}
+    </div>
+    <table class="table" layoutH="93" targetType="navTab" width="100%">
+        ${table}
+    </table>
+</div>

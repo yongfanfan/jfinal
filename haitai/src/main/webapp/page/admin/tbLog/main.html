@@ -1,0 +1,93 @@
+<script type="text/javascript">
+	var time = ${time};
+	var ccount = ${ccount};
+	var pcount = ${pcount};
+	
+	var ocount = ${ocount};
+	var hours = ${hours};
+	
+	
+</script>
+    <script src="component/echarts/echarts.min.js"></script>
+<!--     <script src="component/echarts/echarts.js" ></script> -->
+<script type="text/javascript" src="page/admin/tbLog/main.js"></script>
+<div class="pageHeader" >
+    <form id="pagerForm" action="admin/tbLog/list" method="post" onsubmit="return navTabSearch(this);">
+        <div class="searchBar">
+            <div class="searchContent">
+               <p >开始时间：<input type="text" name="startTime" value="${startTime}" class="required date textInput readonly" datefmt="yyyy-MM-dd" readonly="true" placeholder="点击选择时间">
+               
+                                                    结束时间：<input type="text" name="endTime" value="${endTime}" class="required date textInput readonly" datefmt="yyyy-MM-dd" readonly="true" placeholder="点击选择时间">
+              </p>
+            </div>
+            <div class="subBar">
+                <ul>
+                    <li>
+                        <div class="buttonActive">
+                            <div class="buttonContent">
+                                <button type="button" onclick="myResetSearch(this);">重置</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="buttonActive">
+                            <div class="buttonContent">
+                                <button type="submit">查询</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent" style="height:555px;overflow:scroll;">
+    <div class="panelBar">
+        
+    </div>
+    <div id="main" style="height: 300px"></div>
+    <div id="main2" style="height: 300px"></div>
+    <label style="font-size:20px">商品热度排行</label>
+    <div style="">
+        <table class="table" layoutH="93" targetType="navTab" width="100%">
+            <thead>
+				<tr>
+				    <th>排名</th>
+				    <th>商品名称</th>
+				    <th>热度</th>
+				</tr>
+				</thead>
+				<tbody>
+				<!--:for (item in getProductTop10) {-->
+				<tr>
+				    <td>${itemLP.index}</td>
+				    <td>${item.remark}</td>
+				    <td>${item.id}</td>
+				</tr>
+				<!--:}-->
+				</tbody>
+        </table>
+    </div>
+    <label style="font-size:20px">视频热度排行</label>
+    <div style="">
+        <table class="table" layoutH="93" targetType="navTab" width="100%">
+            <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>视频名称</th>
+                    <th>热度</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--:for (item in getVideoTop10) {-->
+                <tr>
+                    <td>${itemLP.index}</td>
+                    <td>${item.remark}</td>
+                    <td>${item.id}</td>
+                </tr>
+                <!--:}-->
+                </tbody>
+        </table>
+    </div>
+</div>
+

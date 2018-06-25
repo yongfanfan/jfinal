@@ -1,0 +1,46 @@
+<form method="post" action="admin/sysVideo/saveEdit/${model.id}" class="pageForm required-validate"
+      onsubmit="return validateCallback(this, dialogAjaxDone)">
+    <div class="pageFormContent nowrap" layoutH="56">
+        <table class="dialogTable goodsEdit">
+        <tr>
+                <td>视频名称</td>
+                <td>
+                     <input class="required" type="text" name="model.content" value="${model.content}" maxlength="40"
+                           title=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>选择分类</td>
+                <td>
+                     <select name="model.type">
+                        <!--:for (item in typeList) {-->
+                        <option value="${item.id}" 
+                         <!--: if (item.id == model.type) { -->
+                         selected
+                         <!--:}-->
+                        >${item.name}</option>
+                        <!--:}-->
+                     </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="formBar">
+        <ul>
+            <li>
+                <div class="buttonActive">
+                    <div class="buttonContent">
+                        <button type="submit">保存</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="button">
+                    <div class="buttonContent">
+                        <button type="button" class="close">取消</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>

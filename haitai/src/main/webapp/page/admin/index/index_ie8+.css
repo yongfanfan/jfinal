@@ -1,0 +1,91 @@
+/*===================兼容IE8以上及非IE可识别======================*/
+/*页面组件优化*/
+/*input[type="text"],input[type="email"],input[type="password"],#btn1,#btn2{
+    box-sizing: border-box;
+    font-size:14px;
+    *height:20px;
+    border-radius:4px;
+    border:1px solid #c8cccf;
+    -web-kit-appearance:none;
+    -moz-appearance: none;
+    outline:0;
+    padding-left: 4px;
+    text-decoration:none;
+    padding:6px 3px;
+}
+input[type="button"]{
+    box-sizing: border-box;
+    font-size:14px;
+    padding:5px 13px;
+    border-radius:4px;
+    border:1px solid #c8cccf;
+    -web-kit-appearance:none;
+    -moz-appearance: none;
+    outline:0;
+    text-decoration:none;
+}*/
+input[type="button"]:hover {
+    cursor: pointer;
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+    border: 1px solid #30a5ff;
+}
+
+input[readonly][class*='date']:hover {
+    cursor: pointer;
+}
+
+/*select{
+  !*!*  padding: 6px 3px 6px 3px;*!
+    !*padding: 5px 3px 5px 3px\0;*!*!
+    border-radius: 4px;
+}*/
+select:hover {
+    cursor: pointer;
+}
+
+/*textarea{font-size: 15px !important;line-height: 22px !important;}*/
+/*美化输入框*/
+/*.dialogTable input[type="text"],.dialogTable input[type="password"],input[type="email"],input[type="password"],#btn1,#btn2{
+    box-sizing: border-box;
+    font-size:14px;
+    *height:20px;
+    border-radius:4px;
+    border:1px solid #c8cccf;
+    color:black;
+    -web-kit-appearance:none;
+    -moz-appearance: none;
+    display:block;
+    outline:0;
+    text-decoration:none;
+    width:270px;
+}
+.dialogTable input[type="text"]:not([readonly='readonly']):focus,.dialogTable input[type="password"]:focus{
+    border:1px solid #30a5ff;
+}
+.dialogTable  select{
+    padding: 3px 3px 4px 3px;
+    padding: 3px 3px 7px 3px\0;
+    border-radius: 4px;
+}*/
+.dialogTable textarea {
+    /* width: 500px;
+     height: 60px;*/
+    /* border-radius: 4px;*/
+}
+
+/*navTab弹出框*/
+.dialogTable td input[type='file'] {
+    position: relative;
+    -webkit-margin-start: 5px;
+    top: 0;
+}
+
+#ajaxs img {
+    border: 1px solid #c0c0c0;
+}
+
+#add_moudules img {
+    border: 1px solid #ddd;
+}

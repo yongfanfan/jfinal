@@ -1,0 +1,48 @@
+/*========================兼容IE7,IE6=====================*/
+/* TextInput */
+.textInput, .textInputHover, .textInputRequired, .textInputInvalid, .textInputReadonly, .textInputDisabled,
+.textArea, .textAreaHover, .textAreaRequired, .textAreaInvalid, .textAreaReadonly, .textAreaDisabled {
+    padding: 0 2px 0 2px
+}
+
+.searchContent > div {
+    float: left;
+}
+
+.searchContent > select {
+    float: left;
+    *margin-top: 8px;
+}
+
+.searchContent > input[type="text"] {
+    float: left;
+    height: 23px;
+}
+
+input[type="text"] {
+    padding: 5px 2px 2px 2px;
+    height: 17px;
+    *height: 14px;
+}
+
+.spanbox {
+    width: 110px;
+}
+
+.searchContent > span.noname {
+    float: left;
+    margin-top: 11px;
+    padding-top: 2px;
+}
+
+.inputDateButton {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    float: none
+}
+
+.pageHeader {
+    padding: 5px
+}

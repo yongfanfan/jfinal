@@ -1,0 +1,56 @@
+<!--:
+var action = "admin/sysGoodsType/list";
+var searchContent = {
+-->
+<input type="text" name="attr.name" value="${attr.name}" placeholder="请输入名称"/>
+
+<!--:
+};
+var panelBar = {
+-->
+<ul class="toolBar">
+<li class="line"></li>
+   <li>
+        <a class="add" href="admin/sysGoodsType/add" target="dialog" rel="sysGoodsType-add" width="800" height="600">
+            <span>添加</span>
+        </a>
+    </li>
+    <li class="line"></li>
+    <li>
+        <a class="edit" href="admin/sysGoodsType/edit/{itemid}" target="dialog" rel="sysGoodsType-edit" width="800" height="600">
+            <span>修改</span>
+        </a>
+    </li>
+    <li class="line"></li>
+    <li>
+         <a class="delete" title="确实要删除这些商品吗?" target="selectedTodo" rel="ids" href="admin/sysGoodsType/delete">
+                <span>批量删除</span>
+            </a>
+    </li>  
+</ul>
+<!--:
+};
+var table = {
+-->
+<thead>
+<tr>
+     <th><input type="checkbox" class="checkboxCtrl" group="ids" title=""/></th>
+    <th>分类名称</th>
+</tr>
+</thead>
+<tbody>
+<!--:for (item in page.list) {-->
+<tr target="itemid" rel="${item.id}">
+    <td><input type="checkbox" name="ids" value="${item.id}" title=""/></td>
+    <td>${item.name}</td>
+</tr>
+<!--:}-->
+</tbody>
+<!--:
+};
+layout("/template/navTabPage.html",
+        {action : action,
+         searchContent : searchContent,
+         panelBar : panelBar,
+         table : table}) {}
+-->

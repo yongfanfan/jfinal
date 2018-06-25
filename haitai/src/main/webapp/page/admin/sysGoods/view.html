@@ -1,0 +1,37 @@
+<div style="overflow: auto;height: 389px;background: #fff;border: 1px solid #ddd;">
+    <table class="dialogTable">
+        <caption>当前正在登录的用户</caption>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>渠道</th>
+            <th>终端匿名</th>
+            <th>型号</th>
+            <th>品牌</th>
+            <th>串号</th>
+            <th>MAC</th>
+            <th>OS版本</th>
+            <th>APP版本</th>
+            <th>更新时间</th>
+            <th>创建时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--:for (item in list) {-->
+        <tr>
+            <td>${itemLP.index}</td>
+            <td>${@opName.get(item.operatorId)}</td>
+            <td>${item.uuid}</td>
+            <td>${item.stbModel}</td>
+            <td>${item.stbBrand}</td>
+            <td>${item.stbSn}</td>
+            <td>${item.ethMac}</td>
+            <td>${item.osVersion}</td>
+            <td>${item.version}</td>
+            <td>${item.updateTime, ''}</td>
+            <td>${item.createTime, ''}</td>
+        </tr>
+        <!--:}-->
+        </tbody>
+    </table>
+</div>

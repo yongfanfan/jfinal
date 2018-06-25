@@ -1,0 +1,79 @@
+<form method="post" action="admin/sysGoods/saveEdit" class="pageForm required-validate"
+      enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxDone)">
+    <div class="pageFormContent nowrap" layoutH="56">
+        <input type="hidden" name="model.id" value="${model.id}"/>
+        <input type="hidden" name="model.productId" value="${model.productId}"/>
+        <table class="dialogTable goodsEdit">
+            <tr>
+                <td>商品名称</td>
+                <td>
+                     <input class="required" type="text" name="model.name" value="${model.name}" maxlength="40"
+                           title=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>商品图片</td>
+                <td>
+                 <!--:
+                    if (haitai.isNotEmpty(model.imageUrl)) {
+                    -->
+                    <a href="${model.imageUrl}" target="_blank" style="text-decoration:none;">
+                        <img alt="列表图" title="点击浏览" src="${model.imageUrl}" width="40" height="50">
+                    </a>
+                    <!--:}-->
+                    
+                    <input type="text" name="model.imageUrl" value="${model.imageUrl}" title="输入地址"/>
+                    <input type="file" accept="image/*" name="image"/>
+                </td>
+            </tr>
+            <tr>
+                <td>分类</td>
+                <td>
+                     <select name="model.goodsType" class="required">
+                         <option value=""></option>
+                          <!--: for(item in types) { -->
+                          <option value="${item.id}" 
+                           <!--: if(item.id == model.goodsType) { -->
+                           selected
+                           <!--:}-->
+                          >${item.name}</option>
+                          <!--:}-->
+                     </select>
+                </td>
+            </tr>
+            <tr>
+                <td>供货商</td>
+                <td>
+                     <select name="model.supplierId" class="required">
+                         <option value=""></option>
+                          <!--: for(item in suppliers) { -->
+                          <option value="${item.id}" 
+                           <!--: if(item.id == model.supplierId) { -->
+                           selected
+                           <!--:}-->
+                          >${item.name}</option>
+                          <!--:}-->
+                     </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="formBar">
+        <ul>
+            <li>
+                <div class="buttonActive">
+                    <div class="buttonContent">
+                        <button type="submit">保存</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="button">
+                    <div class="buttonContent">
+                        <button type="button" class="close">取消</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>

@@ -1,0 +1,49 @@
+<form method="post" action="system/user/saveAuth" class="pageForm required-validate"
+      onsubmit="return validateCallback(this, dialogAjaxDone);">
+    <div class="pageFormContent" layoutH="56">
+        <input name="userId" type="hidden" value="${userId}">
+        <input id="roleIds" type="hidden" value="${roleIds}">
+        <div style="margin-left: 20px; width: 90%;">
+            <ul class="list-group">
+                <!--:for (item in roles) {-->
+                <li class="list-group-item">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="roleId" id="roleId_${item.id}" value="${item.id}">
+                            &nbsp;&nbsp;&nbsp;&nbsp;${item.name}
+                        </label>
+                    </div>
+                </li>
+                <!--:}-->
+            </ul>
+        </div>
+
+    </div>
+    <div class="formBar">
+        <ul>
+            <li>
+                <div class="buttonActive">
+                    <div class="buttonContent">
+                        <button type="submit">保存</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="button">
+                    <div class="buttonContent">
+                        <button type="button" class="close">取消</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>
+<script type="text/javascript">
+    $(function () {
+        // 初始化，设置被选中
+        var roleids = $("#roleIds", $.pdialog.getCurrent()).val().split(",");
+        roleids.forEach(function (item) {
+            $("#roleId_" + item, $.pdialog.getCurrent()).attr("checked", true);
+        });
+    });
+</script>

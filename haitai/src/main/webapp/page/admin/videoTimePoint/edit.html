@@ -1,0 +1,71 @@
+<h2 class="contentTitle">配置管理</h2>
+<form action="admin/videoTimePoint/saveEdit" method="post"
+	class="pageForm required-validate"
+	onsubmit="return validateCallback(this, myNavTabAjaxDone)">
+	<div class="pageContent">
+		<div class="pageFormContent" layoutH="97">
+		      <div class="divider"></div>
+                            <dl class="nowrap">
+                                <dt>商品名称：</dt>
+                                <dd>
+                                   <input type="text" name="goods.name" value="${goods.name}" disabled class="required textInput">
+                                    <a class="btnLook" href="admin/videoTimePoint/search/2"
+                                        lookupGroup="goods">查找带回</a> <span class="info">(可选择一个商品带回)</span>
+                                </dd>
+                            </dl>
+                            <dl class="nowrap" style="display: none">
+                                <dt>商品id：</dt>
+                                <dd>
+                                <input type="hidden" name="goods.id" readonly value="${goods.productId}" >
+                                </dd>
+                            </dl>
+		   <div class="divider"></div>
+			<div>
+			<input type="hidden" name="model.id" value="${model.id}"/>
+				<table class="table" width="100%">
+				
+				<thead>
+                        <tr>
+                            <th>视频名称</th>
+                            <th>时间点（秒）</th>
+                            <th>持续显示时长（秒）</th>
+                            <th>距左边的长度（px）</th>
+                            <th>距上边的高度（px）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    
+					<tr>
+						<td>${video.content}</td>
+						<td><input type="text" name="model.timePoint" value="${model.timePoint}" class="required number" minlength="1" maxlength="5" /></td>
+						<td><input type="text" name="model.duration" value="${model.duration}" class="required number" minlength="1" maxlength="3" /></td>
+						<td><input type="text" name="model.left" value="${model.left}" class="required number" minlength="1" maxlength="3" /></td>
+						<td><input type="text" name="model.top" value="${model.top}" class="required number" minlength="1" maxlength="3" /></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="divider"></div>
+
+		</div>
+		<div class="formBar">
+			<ul>
+				<li>
+					<div class="buttonActive">
+						<div class="buttonContent">
+							<button type="submit">保存</button>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="button">
+						<div class="buttonContent">
+							<button class="close" type="button">关闭</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</form>

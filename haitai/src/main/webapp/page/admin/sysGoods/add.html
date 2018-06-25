@@ -1,0 +1,45 @@
+<form method="post" action="admin/sysGoods/saveEdit" class="pageForm required-validate"
+      enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxDone)">
+    <div class="pageFormContent nowrap" layoutH="56">
+        <input type="hidden" name="model.id" value="${model.id}"/>
+        <input type="hidden" name="model.productId" value="${model.productId}"/>
+        <table class="dialogTable goodsEdit">
+            <tr>
+                <td>商品名称</td>
+                <td>
+                     <input class="required" type="text" name="model.name" value="" maxlength="40" title=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>商品图片</td>
+                <td>
+                    <input type="file" accept="image/*" name="imageUrl"/>
+                </td>
+            </tr>
+             <tr>
+                <td>商品图片</td>
+                <td>
+                    <input type="file" accept="image/*" name="imageUrl"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="formBar">
+        <ul>
+            <li>
+                <div class="buttonActive">
+                    <div class="buttonContent">
+                        <button type="submit">保存</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="button">
+                    <div class="buttonContent">
+                        <button type="button" class="close">取消</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>

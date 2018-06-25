@@ -1,0 +1,295 @@
+/*标签通用样式修改*/
+select {
+    padding-bottom: 4px;
+    border-radius: 2px
+}
+
+button {
+    background-color: #fafafa;
+    border: 1px solid #ccc
+}
+
+button:hover {
+    background-color: #a9a9a9
+}
+
+/*首页布局和样式*/
+.formHead {
+    padding: 5px 8px;
+    background-color: #a9a9a9;
+    margin: 0 54px;
+}
+
+.newMessage {
+    padding: 0
+}
+
+.userMesP {
+    padding: 0
+}
+
+.kgroup > div {
+    border-bottom: 1px solid #ddd;
+}
+
+.kgroup label {
+    position: relative;
+    bottom: 8px;
+    text-align: left !important;
+}
+
+.kgroup > div div:nth-child(2) {
+    position: relative;
+    bottom: 3px;
+}
+
+.mid {
+    padding: 0;
+}
+
+.tableSearch {
+    float: left;
+    margin: 0 auto;
+}
+
+#ajaxTabel03 > .row {
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-top: none;
+}
+
+#ajaxTabel03 caption {
+    color: black;
+}
+
+.tableSearch {
+    background-color: #D7DDE4;
+    font-size: 13px;
+    margin-left: 23px;
+}
+
+.tableSearch button {
+    *margin-right: 5px;
+    font-size: 13px;
+    padding: 1px 7px;
+    border-radius: 2px;
+    border: 1px solid #BCBFC4;
+}
+
+.tableSearch .innerinput {
+    width: 88px;
+    height: 22px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.tableSearch select {
+
+}
+
+#iframebody {
+    *border: 1px solid transparent;
+}
+
+.tableSearch label {
+    *margin-bottom: 5px;
+    display: inline-block;
+}
+
+.tableSearch input:hover {
+    cursor: pointer;
+}
+
+/*超长页面浮动导航*/
+div.floatCtro {
+    width: 60px;
+    height: 350px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100
+}
+
+div.floatCtro p {
+    width: 60px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-family: '微软雅黑', serif;
+    font-size: 14px;
+    color: #676767;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    background: #fff;
+}
+
+div.floatCtro a {
+    /*display: inline-block;*/
+    display: none;
+    width: 60px;
+    height: 60px;
+    margin: 10px 0 0 0;
+    background: #fff;
+    color: #000;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+div.floatCtro a span {
+    display: block;
+    width: 28px;
+    height: 44px;
+    line-height: 22px;
+    font-family: '微软雅黑', serif;
+    font-size: 14px;
+    text-align: center;
+    margin: 8px 16px;
+    _margin: -10px 0 0 16px;
+}
+
+div.floatCtro a:hover {
+    background: #000;
+    color: #fff;
+    zoom: 1;
+}
+
+div.floatCtro p:hover {
+    background: #c40000;
+    color: #fff;
+}
+
+div.floatCtro p.cur {
+    background: #c40000;
+    color: #fff;
+}
+
+#userMestable td {
+    width: 50%;
+    text-align: left;
+}
+
+.table2 {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #AFBAC7;
+    margin: 8px auto;
+}
+
+.table2 caption {
+    border: 1px solid #AFBAC7;
+    background-color: #D7DDE4;
+    padding: 7px 15px;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.table2 td {
+    border-top: 1px solid #AFBAC7;
+    border-right: 1px solid #ededed;
+    text-align: left;
+    padding: 8px 0 8px 13px;
+}
+
+.table2 thead th:first-child {
+    border-left: 1px solid #AFBAC7;
+}
+
+.table2 thead th:last-child {
+    border-right: 1px solid #AFBAC7;
+}
+
+.table2 thead th {
+    border: 1px solid #ededed;
+    border-bottom: none;
+    color: #4E99D5;
+    /*padding: 4px;*/
+    padding: 8px 0 8px 13px;
+}
+
+#ajaxTabel03 .col-md-12, #ajaxTabel02 .col-md-12, #ajaxTabel02 .col-md-12 {
+    border: 1px solid #AAB5C3;
+    border-bottom: none;
+}
+
+#ajaxTabel01 .col-md-12 {
+    border: none;
+    padding: 0;
+}
+
+#ajaxTabel01 .row {
+    border: none;
+}
+
+.title1 {
+    background-color: #F0F3F6;
+    width: 100%;
+    color: #6AA5D8;
+    text-align: left;
+    padding: 7px 40px;
+    margin-top: 25px;
+    float: none;
+}
+
+#ajaxTabel02 {
+    border-bottom: 1px solid #AAB5C3;
+}
+
+.subtext {
+    color: black;
+    font-size: 12px;
+    margin-left: 2px;
+}
+
+.table2 td:last-child {
+    border-right: 1px solid #AFBAC7;
+}
+
+.showIt {
+    display: block;
+}
+
+.hideIt {
+    display: none;
+}
+
+#chooseDate {
+    width: 206px;
+    height: 30px;
+    display: inline-block;
+    float: left;
+    margin: 0;
+}
+
+#chooseDate li {
+    list-style: none;
+    float: left;
+    font-size: 13px;
+    border: 1px solid #CACCD0;
+    border-radius: 2px;
+    padding: 3px 5px;
+    cursor: pointer;
+}
+
+.blue {
+    background-color: #719ABB;
+    color: white;
+}
+
+.fengxi2 {
+    float: left;
+    color: black;
+}
+
+.fengxi {
+    background-color: #D7DDE4;
+    color: black;
+    height: 38px;
+    margin-top: 20px;
+}
+#showdata{
+    padding-bottom:90px;
+    padding-bottom:260px\9
+}

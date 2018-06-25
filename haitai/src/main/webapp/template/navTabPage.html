@@ -1,0 +1,59 @@
+<div class="pageHeader">
+    <form id="pagerForm" action="${action}" method="post" onsubmit="return navTabSearch(this);">
+        <input type="hidden" name="pageNumber" value="1"/>
+        <input type="hidden" name="pageSize" value="${page.pageSize}"/>
+        <input type="hidden" name="orderField" value="${orderField!}"/>
+        <input type="hidden" name="orderDirection" value="${orderDirection!}"/>
+        <div class="searchBar">
+            <div class="searchContent">
+                ${searchContent}
+            </div>
+            <div class="subBar">
+                <ul>
+                    <!--: if(noReset!0 == 0){ -->
+                    <li>
+                        <div class="buttonActive">
+                            <div class="buttonContent">
+                                <button type="button" onclick="myResetSearch(this);">重置</button>
+                            </div>
+                        </div>
+                    </li>
+                    <!--: } // 当存在变量noReset且值不为0，则不渲染重置按钮 -->
+                    <li>
+                        <div class="buttonActive">
+                            <div class="buttonContent">
+                                <button type="submit">查询</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <div class="panelBar">
+        ${panelBar}
+    </div>
+    <table class="table" layoutH="${height!120}" targetType="navTab" width="100%">
+        ${table}
+    </table>
+    <!--: // 下面的div是分页组件 -->
+    <div class="panelBar">
+        <div class="pages">
+            <span>显示</span>
+            <select name="numPerPage" onchange="navTabPageBreak({numPerPage:this.value})"
+                    style="padding:2px 0;height:auto" title="">
+                <option value="50" ${page.pageSize==50?"selected":""}>50</option>
+                <option value="100" ${page.pageSize==100?"selected":""}>100</option>
+                <option value="200" ${page.pageSize==200?"selected":""}>200</option>
+                <option value="500" ${page.pageSize==500?"selected":""}>500</option>
+                <option value="1000" ${page.pageSize==1000?"selected":""}>1000</option>
+                <option value="2000" ${page.pageSize==2000?"selected":""}>2000</option>
+            </select>
+            <span>条，共${page.totalRow}条</span>
+        </div>
+        <div class="pagination" targetType="navTab" totalCount="${page.totalRow}" numPerPage="${page.pageSize}"
+             pageNumShown="5" currentPage="${page.pageNumber}"></div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<!--:
+var action = "admin/videoTimePoint/search/1";
+var searchContent = {
+-->
+<input type="text" name="attr.content" value="${attr.content}" placeholder="请输入名称"/>
+<!--:
+};
+var panelBar = {
+-->
+<ul class="toolBar">
+    <li>
+        <a class="delete" href="javascript:$.bringBack({id:'', name:''})"><span>不选择</span></a>
+    </li>
+</ul>
+<!--:
+};
+var table = {
+-->
+<thead>
+<tr>
+    <th>选择带回</th>
+    <th>名称</th>
+    <th>作者</th>
+    <th>总长度（分钟）</th>
+    <th>id</th>
+    <th>分类</th>
+</tr>
+</thead>
+<tbody>
+<!--:for (item in page.list) {-->
+<tr>
+    <td><div><a class="btnSelect" href="javascript:$.bringBack({id:'${item.videoId}', name:'${item.content}'})" title="查找带回">选择</a></div></td>
+    <td>${item.content}</td>
+    <td>${item.author}</td>
+    <td>${item.totalTime}</td>
+    <td>${item.videoId}</td>
+    <td>${item.type}</td>
+</tr>
+<!--:}-->
+</tbody>
+<!--:
+};
+layout("/template/dialogPage.html",
+        {action : action,
+         searchContent : searchContent,
+         panelBar : panelBar,
+         table : table,
+         lookup : 0}) {}
+-->

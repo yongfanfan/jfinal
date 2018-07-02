@@ -46,7 +46,9 @@ public class RedisPool {
         config.setTestOnBorrow(testOnBorrow);
         this.jedisSentinelPool = new JedisSentinelPool(masterName, sentinelNodes, config, connectionTimeout, soTimeout, password,
                 defaultDatabase, null);
-        sentinelPool.put(defaultDatabase, jedisSentinelPool);
+        if(sentinelPool.get(defaultDatabase) == null){
+            sentinelPool.put(defaultDatabase, jedisSentinelPool);
+        }
     }
 
     /**
@@ -71,7 +73,9 @@ public class RedisPool {
         config.setMaxWaitMillis(maxWaitMillis);
         config.setTestOnBorrow(testOnBorrow);
         this.cluster = new JedisCluster(jedisClusterNode, connectionTimeout, soTimeout, maxAttempts, password, config);
-        JedisClusterMap.put(name, cluster);
+        if(JedisClusterMap.get(name) == null){
+            JedisClusterMap.put(name, cluster);
+        }
     }
     
     /**

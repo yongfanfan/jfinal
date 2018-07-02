@@ -3,7 +3,6 @@ package com.haitai.haitaitv.common.cache;
 import com.haitai.haitaitv.component.cache.MyCache;
 import com.haitai.haitaitv.component.cache.MyCacheKit;
 import com.haitai.haitaitv.component.util.StrUtil;
-import com.haitai.haitaitv.component.util.encryption.DESUtils;
 import org.beetl.sql.core.SQLManager;
 import org.beetl.sql.core.db.KeyHolder;
 import org.beetl.sql.ext.jfinal.JFinalBeetlSql;

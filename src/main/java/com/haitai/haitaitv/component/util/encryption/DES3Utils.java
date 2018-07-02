@@ -16,11 +16,14 @@
 
 package com.haitai.haitaitv.component.util.encryption;
 
-import com.haitai.haitaitv.component.constant.MqConsts;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import com.haitai.haitaitv.component.constant.JmsConsts;
+
+import java.io.UnsupportedEncodingException;
 import java.security.Key;
 import java.security.MessageDigest;
 import java.util.Arrays;
@@ -30,8 +33,7 @@ import java.util.Base64;
  * DES加密
  */
 public class DES3Utils {
-
-    public static final DES3Utils INSTANCE = new DES3Utils(MqConsts.NEIWANG_MQ_KEY);
+    public static final DES3Utils INSTANCE = new DES3Utils(JmsConsts.NEIWANG_MQ_KEY);
 
     // 指定DES加密解密所用的密钥
     private static Key key;
@@ -63,10 +65,10 @@ public class DES3Utils {
      * @param args
      */
     public static void main(String[] args) {
-        /*DES3Utils des = new DES3Utils("2b7e151628aed2a6abf71589");
-        String test = des.encryptString("你好123123asdasdasd阿三大声大声道，。，，。，");
+        DES3Utils des = new DES3Utils("8d0d5072115546b8ba1adc21df88679d");
+        String test = des.encryptString("InAlbGIX64TGz8Mthq9wnJl0，3L6Ba你，好哈哈哈哈哈哈哈哈");
         System.out.println(test);
-        System.out.println(des.decryptString(test));*/
+        System.out.println(des.decryptString("2pNvuiSe1uD6FSymqxHqhXF41CeoYYn30JgEs3lGX9MQENfoXkq/lwvv8nQTnZrb8uHF5lb04SPNMjNdEd28NNSJsTZ/jutMUIxnstvqrK0="));
     }
 
     /**
@@ -91,22 +93,32 @@ public class DES3Utils {
         }
     }
 
-    // 对字符串进行DES加密，返回BASE64编码的加密字符串
+    /**
+     * 对字符串进行DES加密，返回BASE64编码的加密字符串
+     */
     public final String encryptString(String str) {
-        byte[] bytes = str.getBytes();
+        byte[] bytes = new byte[0];
+        try {
+            bytes = str.getBytes("utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         try {
             Cipher cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
             // cipher.init(Cipher.ENCRYPT_MODE, key);
             IvParameterSpec zeroIv = new IvParameterSpec(iv);
             cipher.init(Cipher.ENCRYPT_MODE, key, zeroIv);
             byte[] encryptStrBytes = cipher.doFinal(bytes);
-            return Base64.getEncoder().encodeToString(encryptStrBytes);
+            encryptStrBytes = Base64.getEncoder().encode(encryptStrBytes);
+            return new String(encryptStrBytes, "utf-8");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    // 对BASE64编码的加密字符串进行解密，返回解密后的字符串
+    /**
+     * 对BASE64编码的加密字符串进行解密，返回解密后的字符串
+     */
     public final String decryptString(String str) {
         try {
             byte[] bytes = Base64.getDecoder().decode(str);
@@ -115,7 +127,7 @@ public class DES3Utils {
             IvParameterSpec zeroIv = new IvParameterSpec(iv);
             cipher.init(Cipher.DECRYPT_MODE, key, zeroIv);
             bytes = cipher.doFinal(bytes);
-            return new String(bytes);
+            return new String(bytes, "utf-8");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

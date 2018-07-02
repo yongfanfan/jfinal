@@ -1,9 +1,10 @@
 package com.haitai.haitaitv.component.shiro.credentials;
 
-import com.haitai.haitaitv.component.util.encryption.DESUtils;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
+
+import com.haitai.haitaitv.component.util.encryption.DES3Utils;
 
 /**
  * 自定义matcher,用于校验用户密码
@@ -15,7 +16,7 @@ public class MyCredentialsMatcher extends SimpleCredentialsMatcher {
 
     @Override
     protected Object getCredentials(AuthenticationToken token) {
-        return DESUtils.passwordEncrypt(new String((char[]) super.getCredentials(token)));
+        return DES3Utils.INSTANCE.encryptString(new String((char[]) super.getCredentials(token)));
     }
 
     @Override

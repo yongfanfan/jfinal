@@ -11,7 +11,6 @@ import com.haitai.haitaitv.component.constant.OtherConsts;
 import com.haitai.haitaitv.component.constant.SessionConsts;
 import com.haitai.haitaitv.component.jfinal.annotation.ControllerBind;
 import com.haitai.haitaitv.component.shiro.credentials.PasswordUtil;
-import com.haitai.haitaitv.component.util.encryption.DESUtils;
 import com.haitai.haitaitv.module.back.common.BackCacheService;
 import com.haitai.haitaitv.module.back.common.BaseBackController;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

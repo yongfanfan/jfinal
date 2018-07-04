@@ -9,7 +9,6 @@ import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.common.unit.ByteSizeUnit;
 import org.elasticsearch.common.unit.ByteSizeValue;
@@ -41,7 +40,7 @@ public class ElasticSearchUtil {
             String[] hostAndPort = address.split(":");
             TransportAddress transportAddress;
             try {
-                transportAddress = new InetSocketTransportAddress(InetAddress.getByName(hostAndPort[0]),
+                transportAddress = new TransportAddress(InetAddress.getByName(hostAndPort[0]),
                         Integer.valueOf(hostAndPort[1]));
             } catch (UnknownHostException e) {
                 LOGGER.error("es初始化时发生异常，未知主机 {}，跳过该主机", address);

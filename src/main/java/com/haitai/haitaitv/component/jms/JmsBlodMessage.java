@@ -47,7 +47,7 @@ public class JmsBlodMessage {
     
     public static void customer() throws Exception{
         JmsConsumer p = JmsConsumer.of(JmsConsts.JMAKE_TO_PRIVATE_DBTABLE,"aaa");
-        p.setMessageListener(message -> getmsg(message));
+        p.setMessageListener(new JmsMessageListenerCallback(10, message -> getmsg(message)));
         p.start();
     }
     

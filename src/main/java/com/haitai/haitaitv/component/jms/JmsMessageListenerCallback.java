@@ -19,7 +19,7 @@ public class JmsMessageListenerCallback implements MessageListener {
      * @param messageCallback 回调
      */
     public JmsMessageListenerCallback(JmsMessageCallback messageCallback) {
-        this(1, messageCallback);
+        this(10, messageCallback);
     }
 
     /**
@@ -30,7 +30,7 @@ public class JmsMessageListenerCallback implements MessageListener {
     public JmsMessageListenerCallback(int maxHandleThreads, JmsMessageCallback messageCallback) {
         this.messageCallback = messageCallback;
         // 支持阻塞的固定大小的线程池(自行手动创建的)
-        this.handleThreadPool = new JmsThreadPoolExecutor(10);
+        this.handleThreadPool = new JmsThreadPoolExecutor(maxHandleThreads);
     }
 
     /**

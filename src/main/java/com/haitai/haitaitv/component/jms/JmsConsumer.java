@@ -37,6 +37,14 @@ public class JmsConsumer implements ExceptionListener {
 
     private MessageListener messageListener;
 
+    public MessageListener getMessageListener() {
+        return messageListener;
+    }
+
+    public void setMessageListener(MessageListener messageListener) {
+        this.messageListener = messageListener;
+    }
+
     private Connection connection;
 
     private Session session;
@@ -90,17 +98,17 @@ public class JmsConsumer implements ExceptionListener {
      * @throws Exception
      */
     public void receive() throws Exception {
-        connection = this.connect();
-        if (connection == null || !JmsConsts.JMS_ENABLED) {
-            return;
-        }
-        connection.start();
-        // 会话采用非事务级别，消息到达机制使用自动通知机制
-        session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);
-        Destination destination = session.createQueue(this.queue);
-        MessageConsumer consumer = session.createConsumer(destination);
-        JmsEventHandler eventHandler = new JmsEventHandler();
-
+//        connection = this.connect();
+//        if (connection == null || !JmsConsts.JMS_ENABLED) {
+//            return;
+//        }
+//        connection.start();
+//        // 会话采用非事务级别，消息到达机制使用自动通知机制
+//        session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);
+//        Destination destination = session.createQueue(this.queue);
+//        MessageConsumer consumer = session.createConsumer(destination);
+//        JmsEventHandler eventHandler = new JmsEventHandler();
+//
 //        POOL.execute(() -> {
 //            while (isRunning) {
 //                try {
@@ -228,11 +236,4 @@ public class JmsConsumer implements ExceptionListener {
         this.queue = queue;
     }
 
-    public MessageListener getMessageListener() {
-        return messageListener;
-    }
-
-    public void setMessageListener(MessageListener messageListener) {
-        this.messageListener = messageListener;
-    }
 }

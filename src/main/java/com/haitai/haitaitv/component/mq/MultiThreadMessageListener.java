@@ -40,7 +40,7 @@ public class MultiThreadMessageListener implements MessageListener {
         this.handleThreadPool.execute(new Runnable() {
             public void run() {
                 try {
-                    
+                    messageHandler.handle(message);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
